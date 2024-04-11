@@ -1,14 +1,30 @@
 <script setup lang="ts">
 import type { PyodideInterface } from 'pyodide'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { EditorView, basicSetup } from 'codemirror'
+import { python } from '@codemirror/lang-python'; 
 
 const props = defineProps<{ pyodide: PyodideInterface }>()
+let parent = ref<HTMLDivElement | null>(null)
+let editor: EditorView | null = null
 
 onMounted(() => {
-  props.pyodide.runPythonAsync("1+1").then((result) => {
-    console.log("Python says that 1+1 =", result);
-  });
+  editor = new EditorView({
+    extensions: [basicSetup, python()],
+    parent: parent.value!,
+    doc: `print('hello world')`
+  })
 })
+
+async function run() {
+  if (!editor) return
+
+  let code = editor.state.doc.toString()
+  await props.pyodide.runPythonAsync(code)
+}
 </script>
 
-<template></template>
+<template>
+  <div ref="parent" />
+  <button @click="run">Run</button>
+</template>
