@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "isomorphic-fetch": "^3.0.0",
+    "pyodide": "^0.25.1",
     "vue": "^3.4.21"
   },
   "devDependencies": {
