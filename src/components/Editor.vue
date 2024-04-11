@@ -16,15 +16,22 @@ onMounted(() => {
   })
 })
 
+let running = ref(false)
+
 async function run() {
   if (!editor) return
 
   let code = editor.state.doc.toString()
-  await props.pyodide.runPythonAsync(code)
+  running.value = true
+  try {
+    await props.pyodide.runPythonAsync(code)
+  } finally {
+    running.value = false
+  }
 }
 </script>
 
 <template>
   <div ref="parent" />
-  <button @click="run">Run</button>
+  <button @click="run" :disabled="running">Run</button>
 </template>
