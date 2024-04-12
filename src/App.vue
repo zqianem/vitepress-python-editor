@@ -3,7 +3,10 @@ import Editor from './components/Editor.vue'
 
 const hello = `
 name = input("What's your name? ")
-print(f"Hello {name}!")
+if name:
+  print(f"Hello {name}!")
+else:
+  print(f"Hello stranger!")
 
 `.trim()
 

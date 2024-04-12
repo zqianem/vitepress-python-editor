@@ -20,7 +20,12 @@ onmessage = async (e) => {
   pyodide.setStdin({ stdin: () => {
     postMessage({ id, input: true })
     Atomics.wait(waitFlag, 0, 0)
-    const inputText = decoder.decode(new Uint8Array(inputData))
+
+    const inputArray = new Uint8Array(Atomics.load(inputData, 0))
+    for (let i = 0; i < inputArray.length; i++)
+      inputArray[i] = Atomics.load(inputData, i + 1)
+    const inputText = decoder.decode(inputArray)
+
     postMessage({ id, output: `${inputText}\n` })
     return inputText
   }})

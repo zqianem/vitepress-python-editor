@@ -45,9 +45,10 @@ worker.addEventListener('message', async (e) => {
     // hack to allow time for Python input()'s prompt to output first
     await new Promise(r => setTimeout(r, 50)) 
 
-    const inputText = encoder.encode(prompt() ?? '')
-    for (let i = 0; i < inputData.length; i++)
-      Atomics.store(inputData, i, inputText[i])
+    const inputArry = encoder.encode(prompt() ?? '')
+    Atomics.store(inputData, 0, inputArry.length)
+    for (let i = 0; i < inputArry.length; i++)
+      Atomics.store(inputData, i + 1, inputArry[i])
 
     Atomics.store(waitFlag, 0, 1) 
     Atomics.notify(waitFlag, 0)
