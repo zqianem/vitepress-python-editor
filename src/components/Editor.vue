@@ -1,10 +1,14 @@
+<script lang="ts">
+const ready = ref(false)
+const worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' })
+worker.addEventListener('message', () => ready.value = true, { once: true })
+</script>
+
 <script setup lang="ts">
-import type { PyodideInterface } from 'pyodide'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 import { EditorView, basicSetup } from 'codemirror'
 import { python } from '@codemirror/lang-python'; 
 
-const props = defineProps<{ pyodide: PyodideInterface }>()
 let parent = ref<HTMLDivElement | null>(null)
 let editor: EditorView | null = null
 
@@ -23,40 +27,31 @@ print('nono')
   })
 })
 
-let running = ref(false)
-let output = ref('')
-watch(output, () => console.log(output.value))
+const id = crypto.randomUUID()
+const output = ref('')
+const running = ref(false)
 
-async function run() {
+worker.addEventListener('message', (e) => {
+  if (e.data.id !== id) return
+
+  if (e.data.output) output.value += `${e.data.output}\n`
+  if (e.data.done) running.value = false
+})
+
+function run() {
   if (!editor) return
 
   let code = editor.state.doc.toString()
   output.value = ''
-  props.pyodide.setStdout({ batched: (out) => {
-    console.log('batched')
-    output.value = `${output.value}${out}\n`
-  }})
-
-  try {
-    running.value = true
-    await props.pyodide.runPythonAsync(code, { filename: '<editor>' })
-  } catch(e) {
-    if (e instanceof Error && e.constructor.name === 'PythonError') {
-      let lines = e.message.split('\n')
-      output.value = lines
-        .slice(lines.findIndex(line => line.includes('File "<editor>"')))
-        .join('\n')
-    } else {
-      throw(e)
-    }
-  } finally {
-    running.value = false
-  }
+  running.value = true
+  worker.postMessage({ id, code })
 }
 </script>
 
 <template>
   <div ref="parent" />
-  <button @click="run" :disabled="running">Run</button>
+  <button @click="run" :disabled="running || !ready">
+    {{ ready ? (running ? 'Running...' : 'Run') : 'Loading Pyodide...' }}
+  </button>
   <pre>{{ output }}</pre>
 </template>
