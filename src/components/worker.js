@@ -9,15 +9,15 @@ onmessage = async (e) => {
   }})
   try {
     await pyodide.runPythonAsync(code, { filename: '<editor>' })
-  } catch(e) {
-    if (e instanceof Error && e.constructor.name === 'PythonError') {
-      let lines = e.message.split('\n')
+  } catch(err) {
+    if (err instanceof Error && err.constructor.name === 'PythonError') {
+      let lines = err.message.split('\n')
       let output = lines
         .slice(lines.findIndex(line => line.includes('File "<editor>"')))
         .join('\n')
       postMessage({ id, output })
     } else {
-      throw(e)
+      throw(err)
     }
   } finally {
     postMessage({ id, done: true })
