@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import Editor from './components/Editor.vue'
 
-const code = `\
+const hello = `
 name = input("What's your name? ")
-print(f"Hello {name}!")`
+print(f"Hello {name}!")
+
+`.trim()
+
+const clock = `
+import time
+
+for i in range(6):
+  if i % 2 == 0:
+    print('tick')
+  else:
+    print('tock')
+  time.sleep(1)
+
+`.trim()
 </script>
 
 <template>
-  <Editor :code />
+  <Editor :code="hello" />
+  <Editor :code="clock" />
 </template>
