@@ -1,7 +1,19 @@
 <script lang="ts">
 const ready = ref(false)
-const worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' })
-worker.addEventListener('message', () => ready.value = true, { once: true })
+const inputBuffer = new SharedArrayBuffer(1024)
+const inputData = new Uint8Array(inputBuffer)
+const waitBuffer = new SharedArrayBuffer(4)
+const waitFlag = new Int32Array(waitBuffer)
+const encoder = new TextEncoder()
+
+const worker = new Worker(new URL('./worker.js', import.meta.url), {
+  type: 'module'
+})
+
+worker.addEventListener('message', () => {
+  ready.value = true
+  worker.postMessage({ inputBuffer, waitBuffer })
+}, { once: true })
 </script>
 
 <script setup lang="ts">
@@ -17,12 +29,8 @@ onMounted(() => {
     extensions: [basicSetup, python()],
     parent: parent.value!,
     doc: `
-import time
-print('hey') 
-time.sleep(3)
-print('no')
-time.sleep(3)
-print('nono')
+name = input("What's your name? ")
+print(f"Hello {name}!")
     `
   })
 })
@@ -31,10 +39,22 @@ const id = crypto.randomUUID()
 const output = ref('')
 const running = ref(false)
 
-worker.addEventListener('message', (e) => {
+worker.addEventListener('message', async (e) => {
   if (e.data.id !== id) return
 
-  if (e.data.output) output.value += `${e.data.output}\n`
+  if (e.data.input) {
+    // hack to allow time for Python input()'s prompt to output first
+    await new Promise(r => setTimeout(r, 50)) 
+
+    const inputText = encoder.encode(prompt() ?? '')
+    for (let i = 0; i < inputData.length; i++)
+      Atomics.store(inputData, i, inputText[i])
+
+    Atomics.store(waitFlag, 0, 1) 
+    Atomics.notify(waitFlag, 0)
+    Atomics.store(waitFlag, 0, 0)
+  }
+  if (e.data.output) output.value += e.data.output
   if (e.data.done) running.value = false
 })
 
