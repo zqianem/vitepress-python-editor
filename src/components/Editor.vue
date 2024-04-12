@@ -21,6 +21,8 @@ import { onMounted, ref } from 'vue'
 import { EditorView, basicSetup } from 'codemirror'
 import { python } from '@codemirror/lang-python'; 
 
+const props = defineProps<{ code: string }>()
+
 let parent = ref<HTMLDivElement | null>(null)
 let editor: EditorView | null = null
 
@@ -28,10 +30,7 @@ onMounted(() => {
   editor = new EditorView({
     extensions: [basicSetup, python()],
     parent: parent.value!,
-    doc: `
-name = input("What's your name? ")
-print(f"Hello {name}!")
-    `
+    doc: props.code
   })
 })
 
