@@ -9,17 +9,20 @@ const encoder = new TextEncoder()
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useLocalStorage } from '@vueuse/core'
 import { EditorView, basicSetup } from 'codemirror'
 import { python } from '@codemirror/lang-python'
 
-const props = defineProps<{ code: string }>()
+const props = defineProps<{
+  id: string
+  code: string
+}>()
 
-const output = ref('')
+const output = useLocalStorage(`editor-output-${props.id}`, '')
 const running = ref(false)
 
 let parent = ref<HTMLDivElement>()
 let editor: EditorView
-let id: string
 
 onMounted(() => {
   // initialize one worker per session shared by all editor instances
@@ -38,7 +41,7 @@ onMounted(() => {
     }, { once: true })
   }
   worker.addEventListener('message', async (e) => {
-    if (e.data.id !== id) return
+    if (e.data.id !== props.id) return
 
     if (e.data.input) {
       // hack to allow time for Python input()'s prompt to output first
@@ -61,14 +64,13 @@ onMounted(() => {
     parent: parent.value!,
     doc: props.code
   })
-  id = crypto.randomUUID()
 })
 
 function run() {
   let code = editor.state.doc.toString()
   output.value = ''
   running.value = true
-  worker.postMessage({ id, code })
+  worker.postMessage({ id: props.id, code })
 }
 </script>
 

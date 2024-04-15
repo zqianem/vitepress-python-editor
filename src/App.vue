@@ -24,6 +24,6 @@ for i in range(6):
 </script>
 
 <template>
-  <Editor :code="hello" />
-  <Editor :code="clock" />
+  <Editor id="hello" :code="hello" />
+  <Editor id="clock" :code="clock" />
 </template>
