@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  vitepress@1.1.0:
+    hash: it2v77am4droqg4z7f4uat2kca
+    path: patches/vitepress@1.1.0.patch
+
 dependencies:
   '@codemirror/lang-python':
     specifier: ^6.1.5
@@ -30,7 +35,7 @@ devDependencies:
     version: 20.12.7
   vitepress:
     specifier: ^1.1.0
-    version: 1.1.0(@algolia/client-search@4.23.3)(@types/node@20.12.7)(search-insights@2.13.0)
+    version: 1.1.0(patch_hash=it2v77am4droqg4z7f4uat2kca)(@algolia/client-search@4.23.3)(@types/node@20.12.7)(search-insights@2.13.0)
 
 packages:
 
@@ -1168,7 +1173,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitepress@1.1.0(@algolia/client-search@4.23.3)(@types/node@20.12.7)(search-insights@2.13.0):
+  /vitepress@1.1.0(patch_hash=it2v77am4droqg4z7f4uat2kca)(@algolia/client-search@4.23.3)(@types/node@20.12.7)(search-insights@2.13.0):
     resolution: {integrity: sha512-G+NS5I2OETxC0SfGAMDO75JWNkrcir0UCptuhQMNoaZhhlqvYtTDQhph4qGc5dtiTtZkcFa/bCcSx+A2gSS3lA==}
     hasBin: true
     peerDependencies:
@@ -1222,6 +1227,7 @@ packages:
       - typescript
       - universal-cookie
     dev: true
+    patched: true
 
   /vue-demi@0.14.7(vue@3.4.21):
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}

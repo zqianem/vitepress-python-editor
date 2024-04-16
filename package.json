@@ -19,5 +19,10 @@
   "devDependencies": {
     "@types/node": "^20.12.7",
     "vitepress": "^1.1.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "vitepress@1.1.0": "patches/vitepress@1.1.0.patch"
+    }
   }
 }
