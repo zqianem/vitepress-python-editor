@@ -1,5 +1,7 @@
-<script setup lang="ts">
-import Editor from './components/Editor.vue'
+# Demo
+
+<script setup>
+import Editor from './src/Editor.vue'
 
 const hello = `
 name = input("What's your name? ")
@@ -23,7 +25,11 @@ for i in range(6):
 `.trim()
 </script>
 
-<template>
-  <Editor id="hello" :code="hello" />
-  <Editor id="clock" :code="clock" />
-</template>
+## Hello world
+
+<Editor id="hello" :code="hello" />
+
+
+## Tick tock
+
+<Editor id="clock" :code="clock" />
