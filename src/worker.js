@@ -7,9 +7,10 @@ let inputData = null
 let waitFlag = null
 
 onmessage = async (e) => {
-  if (e.data.inputBuffer && e.data.waitBuffer) {
+  if (e.data.inputBuffer && e.data.waitBuffer && e.data.interruptBuffer) {
     inputData = new Uint8Array(e.data.inputBuffer)
     waitFlag = new Int32Array(e.data.waitBuffer)
+    pyodide.setInterruptBuffer(e.data.interruptBuffer)
     return
   }
   const { id, code } = e.data
@@ -42,7 +43,7 @@ onmessage = async (e) => {
       let output = lines
         .slice(lines.findIndex(line => line.includes('File "<editor>"')))
         .join('\n')
-      postMessage({ id, output })
+      if (!output.endsWith('KeyboardInterrupt\n')) postMessage({ id, output })
     } else {
       throw(err)
     }

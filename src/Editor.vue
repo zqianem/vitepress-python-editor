@@ -2,6 +2,7 @@
 let worker: Worker
 let inputData: Uint8Array
 let waitFlag: Int32Array
+let interruptBuffer: Uint8Array
 
 const ready = ref(false)
 const encoder = new TextEncoder()
@@ -35,10 +36,11 @@ onMounted(() => {
     inputData = new Uint8Array(inputBuffer)
     const waitBuffer = new SharedArrayBuffer(4)
     waitFlag = new Int32Array(waitBuffer)
+    interruptBuffer = new Uint8Array(new SharedArrayBuffer(1))
 
     worker.addEventListener('message', () => {
       ready.value = true
-      worker.postMessage({ inputBuffer, waitBuffer })
+      worker.postMessage({ inputBuffer, waitBuffer, interruptBuffer })
     }, { once: true })
   }
   worker.addEventListener('message', handleMessage)
@@ -87,10 +89,15 @@ function run() {
   let code = editor.state.doc.toString()
   output.value = ''
   running.value = true
+  interruptBuffer[0] = 0
   worker.postMessage({ id: props.id, code })
 }
 
 function reset() {
+  if (running.value) {
+    interruptBuffer[0] = 2 // use SIGINT to stop running
+    return
+  }
   editor.dispatch({
     changes: { from: 0, to: editor.state.doc.length, insert: props.code },
     selection: { anchor: 0 },
@@ -112,7 +119,7 @@ function reset() {
   <div class="wrapper">
     <pre class="output"><code>{{ output }}</code></pre>
     <span class="label">output</span>
-    <button class="reset" @click="reset">reset editor</button>
+    <button class="reset" @click="reset">{{ running ? 'stop running' : 'reset editor' }}</button>
   </div>
 </template>
 
