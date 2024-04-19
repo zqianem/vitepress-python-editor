@@ -25,7 +25,7 @@ const running = ref(false)
 let parent = ref<HTMLDivElement>()
 let editor: EditorView
 
-onMounted(async () => {
+onMounted(() => {
   // initialize one worker per session shared by all editor instances
   if (!worker) {
     worker = new Worker(new URL('./worker.js', import.meta.url), {
