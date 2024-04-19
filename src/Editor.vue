@@ -98,6 +98,7 @@ function buttonText() {
   <div class="wrapper">
     <pre class="output"><code>{{ output }}</code></pre>
     <span class="label">output</span>
+    <button class="reset">reset editor</button>
   </div>
 </template>
 
@@ -119,6 +120,7 @@ button.run {
   justify-content: center;
   align-items: center;
   color: var(--vp-c-brand-1);
+  z-index: 1;
 }
 
 button.run:hover {
@@ -145,6 +147,7 @@ pre.output {
   font-size: var(--vp-code-font-size);
   border-radius: 8px;
   padding: 20px 0;
+  margin: 8px 0 16px;
   min-height: calc(var(--vp-code-line-height) * 1em);
   box-sizing: content-box;
   overflow: auto;
@@ -164,4 +167,17 @@ span.label {
   font-weight: 500;
   color: var(--vp-code-lang-color);
 }
-</style>
+
+button.reset {
+  position: absolute;
+  bottom: 3px;
+  right: 5px;
+  padding: 0 3px;
+  display: block;
+  text-decoration: underline;
+  color: var(--vp-c-brand-1);
+}
+
+button.reset:hover {
+  color: var(--vp-c-brand-2);
+}</style>
