@@ -79,5 +79,15 @@ function run() {
   <button @click="run" :disabled="running || !ready">
     {{ ready ? (running ? 'Running...' : 'Run') : 'Loading Pyodide...' }}
   </button>
-  <pre>{{ output }}</pre>
+  <pre class="output"><code>{{ output }}</code></pre>
 </template>
+
+<style scoped>
+pre.output {
+  background-color: var(--vp-code-block-bg);
+  line-height: var(--vp-code-line-height);
+  font-size: var(--vp-code-font-size);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+</style>
