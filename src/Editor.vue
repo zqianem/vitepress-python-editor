@@ -9,7 +9,6 @@ const encoder = new TextEncoder()
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useLocalStorage } from '@vueuse/core'
 import { EditorView, minimalSetup } from 'codemirror'
 import { lineNumbers, highlightActiveLine } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
@@ -19,7 +18,7 @@ const props = defineProps<{
   code: string
 }>()
 
-const output = useLocalStorage(`editor-output-${props.id}`, '')
+const output = ref('')
 const running = ref(false)
 
 let parent = ref<HTMLDivElement>()

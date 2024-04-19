@@ -19,9 +19,6 @@ importers:
       '@codemirror/view':
         specifier: ^6.26.3
         version: 6.26.3
-      '@vueuse/core':
-        specifier: ^10.9.0
-        version: 10.9.0(vue@3.4.21)
       codemirror:
         specifier: ^6.0.1
         version: 6.0.1(@lezer/common@1.2.1)
