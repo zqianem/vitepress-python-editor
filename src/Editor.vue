@@ -113,6 +113,34 @@ div.wrapper {
   position: relative;
 }
 
+:deep(.cm-editor) {
+  font-size: var(--vp-code-font-size);
+  background-color: var(--vp-code-block-bg);
+  border-radius: 8px;
+}
+
+:deep(.cm-editor .cm-content) {
+  padding: 20px 0;
+}
+
+:deep(.cm-editor .cm-gutters) {
+  background-color: var(--vp-code-block-bg);
+  border-right: 1px solid var(--vp-code-block-divider-color);
+  width: 32px;
+  justify-content: center;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+:deep(.cm-editor .cm-line) {
+  padding: 0 72px 0 20px;
+  line-height: var(--vp-code-line-height);
+}
+
+:deep(.cm-editor .cm-activeLine) {
+  background-color: var(--vp-code-line-highlight-color);
+}
+
 button.run {
   position: absolute;
   top: 12px;
@@ -186,4 +214,5 @@ button.reset {
 
 button.reset:hover {
   color: var(--vp-c-brand-2);
-}</style>
+}
+</style>

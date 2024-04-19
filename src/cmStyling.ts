@@ -25,29 +25,6 @@ const darkMode = StateField.define<boolean>({
 })
 
 const theme = EditorView.baseTheme({
-  '&': {
-    fontSize: 'var(--vp-code-font-size)',
-    backgroundColor: 'var(--vp-code-block-bg)',
-    borderRadius: '8px',
-  },
-  '.cm-content': {
-    padding: '20px 0',
-  },
-  '.cm-gutters': {
-    backgroundColor: 'var(--vp-code-block-bg)',
-    borderRight: '1px solid var(--vp-code-block-divider-color)',
-    width: '32px',
-    justifyContent: 'center',
-    borderTopLeftRadius: '8px',
-    borderBottomLeftRadius: '8px',
-  },
-  '.cm-line': {
-    padding: '0 72px 0 20px',
-    lineHeight: 'var(--vp-code-line-height)',
-  },
-  '.cm-activeLine': {
-    backgroundColor: 'var(--vp-code-line-highlight-color)',
-  },
   '&dark .cm-cursor': {
     borderLeftColor: 'white',
   },
