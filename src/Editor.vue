@@ -141,8 +141,15 @@ pre.output {
   line-height: var(--vp-code-line-height);
   font-size: var(--vp-code-font-size);
   border-radius: 8px;
-  padding: 20px 24px;
+  padding: 20px 0;
   min-height: calc(var(--vp-code-line-height) * 1em);
   box-sizing: content-box;
+  overflow: auto;
+}
+
+pre.output code {
+  display: block;
+  width: fit-content;
+  padding: 0 24px;
 }
 </style>

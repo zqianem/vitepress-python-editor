@@ -43,7 +43,7 @@ const theme = EditorView.baseTheme({
     borderBottomLeftRadius: '8px',
   },
   '.cm-line': {
-    padding: '0 20px',
+    padding: '0 72px 0 20px',
     lineHeight: 'var(--vp-code-line-height)',
   },
   '.cm-activeLine': {
