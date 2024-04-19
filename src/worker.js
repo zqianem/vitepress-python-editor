@@ -30,7 +30,12 @@ onmessage = async (e) => {
     return inputText
   }})
   try {
-    await pyodide.runPythonAsync(code, { filename: '<editor>' })
+    // https://github.com/pyodide/pyodide/issues/703#issuecomment-1937774811
+    const dict = pyodide.globals.get('dict')
+    const globals = dict()
+    await pyodide.runPythonAsync(code, { filename: '<editor>', globals, locals: globals })
+    globals.destroy()
+    dict.destroy()
   } catch(err) {
     if (err instanceof Error && err.constructor.name === 'PythonError') {
       let lines = err.message.split('\n')
