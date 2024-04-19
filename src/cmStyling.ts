@@ -32,7 +32,6 @@ const theme = EditorView.baseTheme({
   },
   '.cm-content': {
     padding: '20px 0',
-    caretColor: 'white',
   },
   '.cm-gutters': {
     backgroundColor: 'var(--vp-code-block-bg)',
