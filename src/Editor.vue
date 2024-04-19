@@ -118,7 +118,6 @@ function reset() {
   </div>
   <div class="wrapper">
     <pre class="output"><code>{{ output }}</code></pre>
-    <span class="label">output</span>
     <button class="reset" @click="reset">{{ running ? 'stop running' : 'reset editor' }}</button>
   </div>
 </template>
@@ -208,21 +207,13 @@ pre.output code {
   padding: 0 24px;
 }
 
-span.label {
-  position: absolute;
-  top: 2px;
-  right: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--vp-code-lang-color);
-}
-
 button.reset {
   position: absolute;
-  bottom: 3px;
+  top: 2px;
   right: 5px;
+  font-size: 12px;
+  font-weight: 500;
   padding: 0 3px;
-  display: block;
   text-decoration: underline;
   color: var(--vp-c-brand-1);
 }
