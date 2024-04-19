@@ -16,6 +16,15 @@ importers:
       '@codemirror/lang-python':
         specifier: ^6.1.5
         version: 6.1.5(@codemirror/view@6.26.3)
+      '@codemirror/language':
+        specifier: ^6.10.1
+        version: 6.10.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.4.1
+      '@codemirror/theme-one-dark':
+        specifier: ^6.1.2
+        version: 6.1.2
       '@codemirror/view':
         specifier: ^6.26.3
         version: 6.26.3
@@ -148,6 +157,9 @@ packages:
 
   '@codemirror/state@6.4.1':
     resolution: {integrity: sha512-QkEyUiLhsJoZkbumGZlswmAhA7CBU02Wrz7zvH4SrcifbsqwlXShVXg65f3v/ts57W3dqyamEriMhij1Z3Zz4A==}
+
+  '@codemirror/theme-one-dark@6.1.2':
+    resolution: {integrity: sha512-F+sH0X16j/qFLMAfbciKTxVOwkdAS336b7AXTKOZhy8BR3eH/RelsnLgLFINrpST63mmN2OuwUt0W2ndUgYwUA==}
 
   '@codemirror/view@6.26.3':
     resolution: {integrity: sha512-gmqxkPALZjkgSxIeeweY/wGQXBfwTUaLs8h7OKtSwfbj9Ct3L11lD+u1sS7XHppxFQoMDiMDp07P9f3I2jWOHw==}
@@ -895,6 +907,13 @@ snapshots:
       crelt: 1.0.6
 
   '@codemirror/state@6.4.1': {}
+
+  '@codemirror/theme-one-dark@6.1.2':
+    dependencies:
+      '@codemirror/language': 6.10.1
+      '@codemirror/state': 6.4.1
+      '@codemirror/view': 6.26.3
+      '@lezer/highlight': 1.2.0
 
   '@codemirror/view@6.26.3':
     dependencies:
