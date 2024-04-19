@@ -143,6 +143,12 @@ button.run {
   color: var(--vp-c-brand-1);
 }
 
+button.run:hover {
+  color: var(--vp-c-brand-2);
+  background-color: var(--vp-code-copy-code-hover-bg);
+  border: 1px solid var(--vp-code-copy-code-hover-border-color);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
