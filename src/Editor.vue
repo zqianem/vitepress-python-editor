@@ -10,7 +10,8 @@ const encoder = new TextEncoder()
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
-import { EditorView, basicSetup } from 'codemirror'
+import { EditorView, minimalSetup } from 'codemirror'
+import { lineNumbers } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
 
 const props = defineProps<{
@@ -60,7 +61,7 @@ onMounted(() => {
     if (e.data.done) running.value = false
   })
   editor = new EditorView({
-    extensions: [basicSetup, python()],
+    extensions: [minimalSetup, lineNumbers(), python()],
     parent: parent.value!,
     doc: props.code
   })
