@@ -11,7 +11,7 @@ const encoder = new TextEncoder()
 import { onMounted, ref } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 import { EditorView, minimalSetup } from 'codemirror'
-import { lineNumbers } from '@codemirror/view'
+import { lineNumbers, highlightActiveLine } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
 
 const props = defineProps<{
@@ -24,6 +24,32 @@ const running = ref(false)
 
 let parent = ref<HTMLDivElement>()
 let editor: EditorView
+
+const theme = EditorView.theme({
+  '&': {
+    fontSize: 'var(--vp-code-font-size)',
+    backgroundColor: 'var(--vp-code-block-bg)',
+    borderRadius: '8px',
+  },
+  '.cm-content': {
+    padding: '20px 0',
+  },
+  '.cm-gutters': {
+    backgroundColor: 'var(--vp-code-block-bg)',
+    borderRight: '1px solid var(--vp-code-block-divider-color)',
+    width: '32px',
+    justifyContent: 'center',
+    borderTopLeftRadius: '8px',
+    borderBottomLeftRadius: '8px',
+  },
+  '.cm-line': {
+    padding: '0 20px',
+    lineHeight: 'var(--vp-code-line-height)',
+  },
+  '.cm-activeLine': {
+    backgroundColor: 'var(--vp-code-line-highlight-color)'
+  }
+})
 
 onMounted(() => {
   // initialize one worker per session shared by all editor instances
@@ -61,7 +87,13 @@ onMounted(() => {
     if (e.data.done) running.value = false
   })
   editor = new EditorView({
-    extensions: [minimalSetup, lineNumbers(), python()],
+    extensions: [
+      minimalSetup,
+      highlightActiveLine(),
+      lineNumbers(),
+      python(),
+      theme,
+    ],
     parent: parent.value!,
     doc: props.code
   })
@@ -90,5 +122,7 @@ pre.output {
   font-size: var(--vp-code-font-size);
   border-radius: 8px;
   padding: 20px 24px;
+  min-height: calc(var(--vp-code-line-height) * 1em);
+  box-sizing: content-box;
 }
 </style>
