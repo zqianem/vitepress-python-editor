@@ -12,7 +12,7 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { EditorView, minimalSetup } from 'codemirror'
 import { lineNumbers, highlightActiveLine } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
-import { styling } from './cmStyling.ts'
+import { styling } from './cmStyling'
 
 const props = defineProps<{
   id: string

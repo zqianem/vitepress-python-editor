@@ -51,7 +51,7 @@ const theme = EditorView.baseTheme({
   '&dark .cm-cursor': {
     borderLeftColor: 'white',
   },
-});
+})
 
 export const styling = [
   darkMode,
