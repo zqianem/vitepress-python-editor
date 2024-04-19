@@ -80,6 +80,9 @@ async function handleMessage(e: MessageEvent) {
   if (e.data.done) running.value = false
 }
 
+const buttonText = computed(() =>
+  ready.value ? (running.value ? 'Running code...' : 'Run code') : 'Loading Pyodide...')
+
 function run() {
   let code = editor.state.doc.toString()
   output.value = ''
@@ -87,8 +90,13 @@ function run() {
   worker.postMessage({ id: props.id, code })
 }
 
-const buttonText = computed(() =>
-  ready.value ? (running.value ? 'Running code...' : 'Run code') : 'Loading Pyodide...')
+function reset() {
+  editor.dispatch({
+    changes: { from: 0, to: editor.state.doc.length, insert: props.code },
+    selection: { anchor: 0 },
+  })
+  output.value = ''
+}
 </script>
 
 <template>
@@ -104,7 +112,7 @@ const buttonText = computed(() =>
   <div class="wrapper">
     <pre class="output"><code>{{ output }}</code></pre>
     <span class="label">output</span>
-    <button class="reset">reset editor</button>
+    <button class="reset" @click="reset">reset editor</button>
   </div>
 </template>
 
