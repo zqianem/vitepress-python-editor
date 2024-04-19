@@ -102,6 +102,7 @@ function reset() {
     changes: { from: 0, to: editor.state.doc.length, insert: props.code },
     selection: { anchor: 0 },
   })
+  editor.focus()
   output.value = ''
 }
 </script>
