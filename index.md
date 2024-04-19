@@ -23,6 +23,14 @@ for i in range(6):
   time.sleep(1)
 
 `.trim()
+
+const loop = `
+x = 0
+while True:
+  x = x + 1
+  # print(x) # uncommenting this line makes "stop running" fail
+
+`.trim()
 </script>
 
 ## Hello world
@@ -33,3 +41,9 @@ for i in range(6):
 ## Tick tock
 
 <Editor id="clock" :code="clock" />
+
+## Infinite loop
+
+<Editor id="loop" :code="loop" />
+
+See https://github.com/pyodide/pyodide/discussions/4595 for details.
