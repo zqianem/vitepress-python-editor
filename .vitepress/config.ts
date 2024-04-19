@@ -5,6 +5,7 @@ import { copyFile, mkdir } from 'fs/promises'
 export default defineConfig({
   title: "Python Editor",
   description: "A VitePress Component",
+  srcExclude: ['README.md'],
   vite: {
     build: {
       target: 'esnext'
