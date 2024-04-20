@@ -1,6 +1,6 @@
-# A Python editor running locally in a browser
+# VitePress Python Editor
 
-Implemented as a Vue component (CodeMirror + Pyodide) intended for use in a VitePress site.
+An `Editor` Vue component (CodeMirror + Pyodide) intended for inline use in a VitePress docs site.
 
 ```sh
 pnpm i
@@ -12,4 +12,4 @@ pnpm dev
 - [ ] use `<dialog>` instead of `prompt()` for `input()`
 - [ ] terminate and restart worker if interrupts don't stop in time
 - [ ] try to use slot instead of prop for `code`
-- [ ] publish this as a package
+- [ ] publish this as a package and document usage
