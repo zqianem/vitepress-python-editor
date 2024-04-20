@@ -9,7 +9,7 @@ const encoder = new TextEncoder()
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { EditorView, minimalSetup } from 'codemirror'
 import { lineNumbers, highlightActiveLine } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
@@ -19,6 +19,8 @@ const props = defineProps<{
   id: string
   code: string
 }>()
+
+const storageKey = computed(() => `code-editor-${props.id}`)
 
 const output = ref('')
 const running = ref(false)
@@ -53,7 +55,11 @@ onMounted(() => {
       styling,
     ],
     parent: parent.value!,
-    doc: props.code
+    doc: localStorage.getItem(storageKey.value) ?? props.code
+  })
+  document.addEventListener('visibilitychange', () => {
+    const code = editor.state.doc.toString()
+    save(code)
   })
 })
 
@@ -86,7 +92,8 @@ const buttonText = computed(() =>
   ready.value ? (running.value ? 'Running code...' : 'Run code') : 'Loading Pyodide...')
 
 function run() {
-  let code = editor.state.doc.toString()
+  const code = editor.state.doc.toString()
+  save(code)
   output.value = ''
   running.value = true
   interruptBuffer[0] = 0
@@ -98,12 +105,18 @@ function reset() {
     interruptBuffer[0] = 2 // use SIGINT to stop running
     return
   }
+  localStorage.removeItem(storageKey.value)
   editor.dispatch({
     changes: { from: 0, to: editor.state.doc.length, insert: props.code },
     selection: { anchor: 0 },
   })
   editor.focus()
   output.value = ''
+}
+
+function save(code: string) {
+  if (code === props.code) localStorage.removeItem(storageKey.value)
+  else localStorage.setItem(storageKey.value, code)
 }
 </script>
 
