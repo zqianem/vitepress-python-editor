@@ -21,6 +21,7 @@ const props = defineProps<{
 
 const storageKey = computed(() => `code-editor-${props.id}`)
 
+const mounted = ref(false)
 const output = ref('')
 const running = ref(false)
 
@@ -68,6 +69,8 @@ onMounted(() => {
     const code = editor.state.doc.toString()
     save(code)
   })
+
+  mounted.value = true
 })
 
 onUnmounted(() => {
@@ -130,7 +133,7 @@ function save(code: string) {
 <template>
   <div ref="anchor" class="wrapper">
     <div ref="parent" />
-    <button class="run" @click="run" :disabled="running || !ready" :title="buttonText">
+    <button v-if="mounted" class="run" @click="run" :disabled="running || !ready" :title="buttonText">
       <span class="sr-only">{{ buttonText }}</span>
       <svg v-if="running" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z" opacity=".5"/><path fill="currentColor" d="M20 12h2A10 10 0 0 0 12 2V4A8 8 0 0 1 20 12Z"><animateTransform attributeName="transform" dur="1s" from="0 12 12" repeatCount="indefinite" to="360 12 12" type="rotate"/></path></svg>
       <svg v-else-if="ready" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M8 17.175V6.825q0-.425.3-.713t.7-.287q.125 0 .263.037t.262.113l8.15 5.175q.225.15.338.375t.112.475t-.112.475t-.338.375l-8.15 5.175q-.125.075-.262.113T9 18.175q-.4 0-.7-.288t-.3-.712"/></svg>
@@ -139,7 +142,7 @@ function save(code: string) {
   </div>
   <div class="wrapper">
     <pre class="output"><code>{{ output }}</code></pre>
-    <button class="reset" @click="reset">{{ running ? 'stop running' : 'reset editor' }}</button>
+    <button v-if="mounted" class="reset" @click="reset">{{ running ? 'stop running' : 'reset editor' }}</button>
   </div>
 </template>
 
@@ -155,10 +158,13 @@ div.wrapper {
 }
 
 :deep(.cm-editor .cm-content) {
+  font-family: var(--vp-font-family-mono);
   padding: 20px 0;
 }
 
 :deep(.cm-editor .cm-gutters) {
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-code-line-number-color);
   background-color: var(--vp-code-block-bg);
   border-right: 1px solid var(--vp-code-block-divider-color);
   width: 32px;
@@ -167,8 +173,15 @@ div.wrapper {
   border-bottom-left-radius: 8px;
 }
 
+:deep(.cm-editor .cm-gutterElement) {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0;
+}
+
 :deep(.cm-editor .cm-line) {
-  padding: 0 72px 0 20px;
+  padding: 0 72px 0 24px;
   line-height: var(--vp-code-line-height);
 }
 
@@ -216,7 +229,7 @@ pre.output {
   font-size: var(--vp-code-font-size);
   border-radius: 8px;
   padding: 20px 0;
-  margin: 8px 0 16px;
+  margin: 16px 0;
   min-height: calc(var(--vp-code-line-height) * 1em);
   box-sizing: content-box;
   overflow: auto;
