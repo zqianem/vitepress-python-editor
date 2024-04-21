@@ -50,7 +50,7 @@ onMounted(() => {
   worker.addEventListener('message', handleMessage)
 
   const prev = anchor.value?.previousElementSibling
-  const codeElement = prev?.classList.contains('language-py') ? prev : null
+  const codeElement = prev?.classList.contains('language-python') ? prev : null
   initialCode = codeElement?.querySelector('pre')?.textContent ?? ''
   codeElement?.setAttribute('hidden', '')
 

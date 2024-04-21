@@ -6,6 +6,9 @@ export default defineConfig({
   title: "Python Editor",
   description: "A VitePress Component",
   srcExclude: ['README.md'],
+  markdown: {
+    lineNumbers: true
+  },
   vite: {
     build: {
       target: 'esnext'

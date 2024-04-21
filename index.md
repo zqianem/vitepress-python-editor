@@ -6,7 +6,7 @@ import Editor from './src/Editor.vue'
 
 ## Hello world
 
-```py:line-numbers
+```python
 name = input("What's your name? ")
 
 if name:
@@ -18,7 +18,7 @@ else:
 
 ## Tick tock
 
-```py:line-numbers
+```python
 import time
 
 for i in range(6):
@@ -32,7 +32,7 @@ for i in range(6):
 
 ## Infinite loop
 
-```py:line-numbers
+```python
 x = 0
 while True:
   x = x + 1
