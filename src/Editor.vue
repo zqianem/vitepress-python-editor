@@ -155,6 +155,7 @@ div.wrapper {
   font-size: var(--vp-code-font-size);
   background-color: var(--vp-code-block-bg);
   border-radius: 8px;
+  margin-bottom: 16px;
 }
 
 :deep(.cm-editor .cm-content) {
@@ -229,7 +230,7 @@ pre.output {
   font-size: var(--vp-code-font-size);
   border-radius: 8px;
   padding: 20px 0;
-  margin: 16px 0;
+  margin: -8px 0 16px 0;
   min-height: calc(var(--vp-code-line-height) * 1em);
   box-sizing: content-box;
   overflow: auto;
