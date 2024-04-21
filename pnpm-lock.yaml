@@ -41,9 +41,6 @@ importers:
         specifier: ^3.4.21
         version: 3.4.21
     devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.12.7
       vitepress:
         specifier: ^1.1.0
         version: 1.1.0(patch_hash=it2v77am4droqg4z7f4uat2kca)(@algolia/client-search@4.23.3)(@types/node@20.12.7)(postcss@8.4.38)(search-insights@2.13.0)
@@ -1097,6 +1094,7 @@ snapshots:
   '@types/node@20.12.7':
     dependencies:
       undici-types: 5.26.5
+    optional: true
 
   '@types/web-bluetooth@0.0.20': {}
 
@@ -1366,7 +1364,8 @@ snapshots:
 
   tr46@0.0.3: {}
 
-  undici-types@5.26.5: {}
+  undici-types@5.26.5:
+    optional: true
 
   vite@5.2.8(@types/node@20.12.7):
     dependencies:
