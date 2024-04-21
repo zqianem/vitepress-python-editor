@@ -17,7 +17,6 @@ import { styling } from './cmStyling'
 
 const props = defineProps<{
   id: string
-  code: string
 }>()
 
 const storageKey = computed(() => `code-editor-${props.id}`)
@@ -25,7 +24,9 @@ const storageKey = computed(() => `code-editor-${props.id}`)
 const output = ref('')
 const running = ref(false)
 
+let anchor = ref<HTMLDivElement>()
 let parent = ref<HTMLDivElement>()
+let initialCode: string
 let editor: EditorView
 
 onMounted(() => {
@@ -46,6 +47,12 @@ onMounted(() => {
     }, { once: true })
   }
   worker.addEventListener('message', handleMessage)
+
+  const prev = anchor.value?.previousElementSibling
+  const codeElement = prev?.classList.contains('language-py') ? prev : null
+  initialCode = codeElement?.querySelector('pre')?.textContent ?? ''
+  codeElement?.setAttribute('hidden', '')
+
   editor = new EditorView({
     extensions: [
       minimalSetup,
@@ -55,7 +62,7 @@ onMounted(() => {
       styling,
     ],
     parent: parent.value!,
-    doc: localStorage.getItem(storageKey.value) ?? props.code
+    doc: localStorage.getItem(storageKey.value) ?? initialCode
   })
   document.addEventListener('visibilitychange', () => {
     const code = editor.state.doc.toString()
@@ -107,7 +114,7 @@ function reset() {
   }
   localStorage.removeItem(storageKey.value)
   editor.dispatch({
-    changes: { from: 0, to: editor.state.doc.length, insert: props.code },
+    changes: { from: 0, to: editor.state.doc.length, insert: initialCode },
     selection: { anchor: 0 },
   })
   editor.focus()
@@ -115,13 +122,13 @@ function reset() {
 }
 
 function save(code: string) {
-  if (code === props.code) localStorage.removeItem(storageKey.value)
+  if (code === initialCode) localStorage.removeItem(storageKey.value)
   else localStorage.setItem(storageKey.value, code)
 }
 </script>
 
 <template>
-  <div class="wrapper">
+  <div ref="anchor" class="wrapper">
     <div ref="parent" />
     <button class="run" @click="run" :disabled="running || !ready" :title="buttonText">
       <span class="sr-only">{{ buttonText }}</span>

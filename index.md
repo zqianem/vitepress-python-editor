@@ -2,17 +2,23 @@
 
 <script setup>
 import Editor from './src/Editor.vue'
+</script>
 
-const hello = `
+## Hello world
+
+```py
 name = input("What's your name? ")
+
 if name:
   print(f"Hello {name}!")
 else:
   print(f"Hello stranger!")
+```
+<Editor id="hello" />
 
-`.trim()
+## Tick tock
 
-const clock = `
+```py
 import time
 
 for i in range(6):
@@ -21,29 +27,17 @@ for i in range(6):
   else:
     print('tock')
   time.sleep(1)
+```
+<Editor id="clock" />
 
-`.trim()
+## Infinite loop
 
-const loop = `
+```py
 x = 0
 while True:
   x = x + 1
   # print(x) # uncommenting this line makes "stop running" fail
-
-`.trim()
-</script>
-
-## Hello world
-
-<Editor id="hello" :code="hello" />
-
-
-## Tick tock
-
-<Editor id="clock" :code="clock" />
-
-## Infinite loop
-
-<Editor id="loop" :code="loop" />
+```
+<Editor id="loop" />
 
 See https://github.com/pyodide/pyodide/discussions/4595 for details.

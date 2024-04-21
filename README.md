@@ -11,5 +11,4 @@ pnpm dev
 
 - [ ] use `<dialog>` instead of `prompt()` for `input()`
 - [ ] terminate and restart worker if interrupts don't stop in time
-- [ ] try to use slot instead of prop for `code`
 - [ ] publish this as a package and document usage
