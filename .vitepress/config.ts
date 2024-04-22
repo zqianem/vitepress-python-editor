@@ -5,7 +5,7 @@ import { vitepressPythonEditor } from 'vitepress-python-editor/vite-plugin'
 export default defineConfig({
   title: 'VitePress Python Editor',
   head: [['link', { rel: 'icon', href: '/vitepress-logo-mini.svg' }]],
-  srcExclude: ['README.md'],
+  srcDir: 'demo',
   markdown: {
     lineNumbers: true,
   },
