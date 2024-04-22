@@ -1,7 +1,13 @@
 {
   "name": "vitepress-python-editor",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Editor component for VitePress that runs Python in the browser",
+  "keywords": ["vitepress", "python", "code", "editor", "vue", "codemirror", "pyodide"],
+  "homepage": "https://github.com/zqianem/vitepress-python-editor",
+  "bugs": "https://github.com/zqianem/vitepress-python-editor/issues",
+  "license": "MIT",
+  "author": "Em Zhan <zqianem@gmail.com>",
+  "repository": "github:zqianem/vitepress-python-editor",
   "type": "module",
   "exports": {
     ".": "src/Editor.vue",
