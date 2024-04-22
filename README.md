@@ -7,9 +7,6 @@ Runs Python code locally in the browser and supports Python's `input()`.
 
 ## Installation & Usage
 
-> [!WARNING]
-> This package is still a work-in-progress; these instructions do not yet work.
-
 > [!IMPORTANT]
 > This editor requires `SharedArrayBuffer`, so your site hosting must have the ability to set the appropriate HTTP headers. See the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#security_requirements) for details.
 
@@ -65,4 +62,3 @@ pnpm dev
 
 - [ ] have better focus styles for both editor and output input
 - [ ] match editor syntax highlighting with VitePress default theme
-- [ ] publish this as a package
