@@ -111,7 +111,7 @@ const buttonText = computed(() =>
 
 const outputLines = computed(() => {
   const lines = output.value.split('\n')
-  if (lines[lines.length - 1] === '') lines.pop()
+  if (lines[lines.length - 1] === '' && !waitingForInput.value) lines.pop()
   return lines.length === 0 ? [''] : lines
 })
 
