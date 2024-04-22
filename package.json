@@ -26,8 +26,7 @@
   },
   "devDependencies": {
     "vite": "^5.2.10",
-    "vitepress": "^1.1.0",
-    "vitepress-python-editor": "link:"
+    "vitepress": "^1.1.0"
   },
   "pnpm": {
     "patchedDependencies": {
