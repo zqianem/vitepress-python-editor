@@ -1,4 +1,5 @@
 import { copyFile, mkdir } from 'fs/promises'
+import { join } from 'path'
 
 export function vitepressPythonEditor(
   { assetsDir } = { assetsDir: '.vitepress/dist/assets' }
@@ -31,8 +32,14 @@ export function vitepressPythonEditor(
         'pyodide.asm.wasm',
         'python_stdlib.zip'
       ]
+      const pyodideDir = join(
+        'node_modules',
+        'vitepress-python-editor',
+        'node_modules',
+        'pyodide',
+      )
       for (const file of files) {
-        await copyFile(`node_modules/pyodide/${file}`, `${assetsDir}/${file}`)
+        await copyFile(join(pyodideDir, file), join(assetsDir, file))
       }
     },
   }

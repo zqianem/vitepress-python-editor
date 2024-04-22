@@ -28,6 +28,7 @@
     "codemirror": "^6.0.1",
     "isomorphic-fetch": "^3.0.0",
     "pyodide": "^0.25.1",
+    "vitepress-python-editor": "link:",
     "vue": "^3.4.21"
   },
   "devDependencies": {

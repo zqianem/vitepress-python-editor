@@ -40,6 +40,9 @@ importers:
       pyodide:
         specifier: ^0.25.1
         version: 0.25.1
+      vitepress-python-editor:
+        specifier: 'link:'
+        version: 'link:'
       vue:
         specifier: ^3.4.21
         version: 3.4.21
