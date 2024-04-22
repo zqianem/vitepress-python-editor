@@ -112,7 +112,7 @@ const buttonText = computed(() =>
 const outputLines = computed(() => {
   const lines = output.value.split('\n')
   if (lines[lines.length - 1] === '') lines.pop()
-  return lines
+  return lines.length === 0 ? [''] : lines
 })
 
 function run() {
@@ -251,7 +251,6 @@ div.output {
   border-radius: 8px;
   padding: 20px 0;
   margin: -8px 0 16px 0;
-  min-height: calc(var(--vp-code-line-height) * 1em);
   box-sizing: content-box;
   overflow: auto;
 }
@@ -274,7 +273,6 @@ div.output input {
   font-size: var(--vp-code-font-size);
   padding-right: 24px;
   outline: none;
-  display: inline-block;
 }
 
 div.output input:only-child {
