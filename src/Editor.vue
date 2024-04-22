@@ -11,7 +11,8 @@ const encoder = new TextEncoder()
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { EditorView, minimalSetup } from 'codemirror'
-import { lineNumbers, highlightActiveLine } from '@codemirror/view'
+import { lineNumbers, highlightActiveLine, keymap } from '@codemirror/view'
+import { indentWithTab } from '@codemirror/commands'
 import { python } from '@codemirror/lang-python'
 import { styling } from './cmStyling'
 
@@ -61,6 +62,7 @@ onMounted(() => {
       minimalSetup,
       highlightActiveLine(),
       lineNumbers(),
+      keymap.of([indentWithTab]),
       python(),
       styling,
     ],
