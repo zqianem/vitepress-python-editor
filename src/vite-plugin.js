@@ -1,9 +1,8 @@
-import type { Plugin } from 'vite'
 import { copyFile, mkdir } from 'fs/promises'
 
 export function vitepressPythonEditor(
   { assetsDir } = { assetsDir: '.vitepress/dist/assets' }
-): Plugin {
+) {
   return {
     name: 'vite-plugin-vitepress-python-editor',
     config: () => ({

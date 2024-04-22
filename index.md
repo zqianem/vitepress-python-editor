@@ -1,7 +1,7 @@
 # Demo
 
 <script setup>
-import Editor from './src/Editor.vue'
+import Editor from 'vitepress-python-editor'
 </script>
 
 ## Hello world

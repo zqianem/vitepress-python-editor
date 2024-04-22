@@ -1,8 +1,12 @@
 {
-  "name": "python-editor-in-browser",
+  "name": "vitepress-python-editor",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "exports": {
+    ".": "src/Editor.vue",
+    "./vite-plugin": "src/vite-plugin.js"
+  },
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
@@ -22,7 +26,8 @@
   },
   "devDependencies": {
     "vite": "^5.2.10",
-    "vitepress": "^1.1.0"
+    "vitepress": "^1.1.0",
+    "vitepress-python-editor": "link:"
   },
   "pnpm": {
     "patchedDependencies": {
