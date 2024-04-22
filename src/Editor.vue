@@ -9,7 +9,7 @@ const encoder = new TextEncoder()
 </script>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { computed, ref, onMounted, onUnmounted, watchEffect, nextTick } from 'vue'
 import { EditorView, minimalSetup } from 'codemirror'
 import { lineNumbers, highlightActiveLine, keymap } from '@codemirror/view'
 import { indentWithTab } from '@codemirror/commands'
@@ -94,11 +94,17 @@ async function handleMessage(e: MessageEvent) {
   if (e.data.done) running.value = false
 }
 
-function handleInput(e: Event) {
+const inputText = ref('')
+watchEffect(() => {
+  if (input.value) input.value.style.width = `${inputText.value.length+1}ch`
+})
+
+function handleInput() {
   waitingForInput.value = false
 
-  const text = (e.target as HTMLInputElement).value
-  const inputArry = encoder.encode(text ?? '')
+  const inputArry = encoder.encode(inputText.value ?? '')
+  inputText.value = ''
+
   Atomics.store(inputData, 0, inputArry.length)
   for (let i = 0; i < inputArry.length; i++)
     Atomics.store(inputData, i + 1, inputArry[i])
@@ -161,7 +167,13 @@ function save(code: string) {
       <code v-for="line, i in outputLines">
         {{ line }}<br v-if="i != outputLines.length-1">
       </code>
-      <input v-if="waitingForInput" ref="input" type="text" @keydown.enter="handleInput" />
+      <input
+        v-if="waitingForInput"
+        ref="input"
+        v-model="inputText"
+        @keydown.enter="handleInput"
+        type="text"
+      />
     </div>
     <button v-if="mounted" class="reset" @click="reset">
       {{ running ? 'stop running' : 'reset editor' }}
@@ -274,6 +286,7 @@ div.output code:last-of-type {
 div.output input {
   font-family: var(--vp-font-family-mono);
   font-size: var(--vp-code-font-size);
+  box-sizing: content-box;
   padding-right: 24px;
   outline: none;
 }
