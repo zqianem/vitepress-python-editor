@@ -1,6 +1,34 @@
 # VitePress Python Editor
 
-An `Editor` Vue component (CodeMirror + Pyodide) intended for inline use in a VitePress docs site.
+A code editor for the Python programming language for use in a VitePress site.
+
+Runs Python code locally in the browser and supports Python's `input()`.
+
+
+## Installation & Usage
+
+```sh
+npm i vitepress-python-editor
+```
+
+In a VitePress `.md` file, place the `<Editor>` component directly after a code block:
+
+````md
+<script setup>
+import { Editor } from 'vitepress-python-editor'
+</script>
+
+```python
+name = input("What's your name? ")
+print(f"Hello {name}!")
+```
+<Editor id="hello" />
+````
+
+The code block language must be exactly `python` and the `id` prop is required and should be unique among multiple `<Editor>` instances.
+
+
+## Developing
 
 ```sh
 pnpm i
@@ -11,4 +39,4 @@ pnpm dev
 
 - [ ] have better focus styles for both editor and output input
 - [ ] match editor syntax highlighting with VitePress default theme
-- [ ] publish this as a package and document usage
+- [ ] publish this as a package
