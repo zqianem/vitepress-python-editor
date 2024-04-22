@@ -14,7 +14,7 @@ import { EditorView, minimalSetup } from 'codemirror'
 import { lineNumbers, highlightActiveLine, keymap } from '@codemirror/view'
 import { indentWithTab } from '@codemirror/commands'
 import { python } from '@codemirror/lang-python'
-import { styling } from './cmStyling'
+import { styling } from './codemirror-styling'
 
 const props = defineProps<{
   id: string
@@ -36,7 +36,7 @@ let editor: EditorView
 onMounted(() => {
   // initialize one worker per session shared by all editor instances
   if (!worker) {
-    worker = new Worker(new URL('./worker.js', import.meta.url), {
+    worker = new Worker(new URL('./pyodide-worker.js', import.meta.url), {
       type: 'module'
     })
     const inputBuffer = new SharedArrayBuffer(1024)
