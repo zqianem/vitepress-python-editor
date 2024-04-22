@@ -7,6 +7,9 @@ Runs Python code locally in the browser and supports Python's `input()`.
 
 ## Installation & Usage
 
+> [!WARNING]
+> This package is still a work-in-progress; these instructions do not yet work.
+
 ```sh
 npm i vitepress-python-editor
 ```
