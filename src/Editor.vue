@@ -9,7 +9,7 @@ const encoder = new TextEncoder()
 </script>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { EditorView, minimalSetup } from 'codemirror'
 import { lineNumbers, highlightActiveLine } from '@codemirror/view'
 import { python } from '@codemirror/lang-python'
@@ -24,9 +24,11 @@ const storageKey = computed(() => `code-editor-${props.id}`)
 const mounted = ref(false)
 const output = ref('')
 const running = ref(false)
+const waitingForInput = ref(false)
 
 let anchor = ref<HTMLDivElement>()
 let parent = ref<HTMLDivElement>()
+let input = ref<HTMLInputElement>()
 let initialCode: string
 let editor: EditorView
 
@@ -82,24 +84,36 @@ async function handleMessage(e: MessageEvent) {
   if (e.data.id !== props.id) return
 
   if (e.data.input) {
-    // hack to allow time for Python input()'s prompt to output first
-    await new Promise(r => setTimeout(r, 50))
-
-    const inputArry = encoder.encode(prompt() ?? '')
-    Atomics.store(inputData, 0, inputArry.length)
-    for (let i = 0; i < inputArry.length; i++)
-      Atomics.store(inputData, i + 1, inputArry[i])
-
-    Atomics.store(waitFlag, 0, 1)
-    Atomics.notify(waitFlag, 0)
-    Atomics.store(waitFlag, 0, 0)
+    waitingForInput.value = true
+    await nextTick()
+    input.value?.focus()
   }
   if (e.data.output) output.value += e.data.output
   if (e.data.done) running.value = false
 }
 
+function handleInput(e: Event) {
+  waitingForInput.value = false
+
+  const text = (e.target as HTMLInputElement).value
+  const inputArry = encoder.encode(text ?? '')
+  Atomics.store(inputData, 0, inputArry.length)
+  for (let i = 0; i < inputArry.length; i++)
+    Atomics.store(inputData, i + 1, inputArry[i])
+
+  Atomics.store(waitFlag, 0, 1)
+  Atomics.notify(waitFlag, 0)
+  Atomics.store(waitFlag, 0, 0)
+}
+
 const buttonText = computed(() =>
   ready.value ? (running.value ? 'Running code...' : 'Run code') : 'Loading Pyodide...')
+
+const outputLines = computed(() => {
+  const lines = output.value.split('\n')
+  if (lines[lines.length - 1] === '') lines.pop()
+  return lines
+})
 
 function run() {
   const code = editor.state.doc.toString()
@@ -141,8 +155,15 @@ function save(code: string) {
     </button>
   </div>
   <div class="wrapper">
-    <pre class="output"><code>{{ output }}</code></pre>
-    <button v-if="mounted" class="reset" @click="reset">{{ running ? 'stop running' : 'reset editor' }}</button>
+    <div class="output">
+      <code v-for="line, i in outputLines">
+        {{ line }}<br v-if="i != outputLines.length-1">
+      </code>
+      <input v-if="waitingForInput" ref="input" type="text" @keydown.enter="handleInput" />
+    </div>
+    <button v-if="mounted" class="reset" @click="reset">
+      {{ running ? 'stop running' : 'reset editor' }}
+    </button>
   </div>
 </template>
 
@@ -224,10 +245,9 @@ button.run:hover {
   border-width: 0;
 }
 
-pre.output {
+div.output {
   background-color: var(--vp-code-block-bg);
   line-height: var(--vp-code-line-height);
-  font-size: var(--vp-code-font-size);
   border-radius: 8px;
   padding: 20px 0;
   margin: -8px 0 16px 0;
@@ -236,10 +256,29 @@ pre.output {
   overflow: auto;
 }
 
-pre.output code {
-  display: block;
-  width: fit-content;
+div.output code {
+  color: revert;
+  background: none;
+  width: 100%;
   padding: 0 24px;
+  white-space: pre;
+}
+
+div.output code:last-of-type {
+  width: fit-content;
+  padding-right: 0;
+}
+
+div.output input {
+  font-family: var(--vp-font-family-mono);
+  font-size: var(--vp-code-font-size);
+  padding-right: 24px;
+  outline: none;
+  display: inline-block;
+}
+
+div.output input:only-child {
+  padding-left: 24px;
 }
 
 button.reset {

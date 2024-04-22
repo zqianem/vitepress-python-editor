@@ -9,5 +9,4 @@ pnpm dev
 
 ## TODO
 
-- [ ] use `<dialog>` instead of `prompt()` for `input()`
 - [ ] publish this as a package and document usage
