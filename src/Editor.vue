@@ -253,6 +253,7 @@ div.output {
   margin: -8px 0 16px 0;
   box-sizing: content-box;
   overflow: auto;
+  white-space: nowrap;
 }
 
 div.output code {
