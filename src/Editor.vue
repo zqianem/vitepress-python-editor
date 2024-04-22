@@ -134,6 +134,9 @@ function run() {
 
 function reset() {
   if (running.value) {
+    // workaround needing to input before interrupt
+    if (waitingForInput.value) handleInput()
+
     interruptBuffer[0] = 2 // use SIGINT to stop running
     return
   }
