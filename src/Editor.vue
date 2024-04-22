@@ -187,13 +187,12 @@ function save(code: string) {
 <style scoped>
 div.wrapper {
   position: relative;
+  margin: 16px -24px;
 }
 
 :deep(.cm-editor) {
   font-size: var(--vp-code-font-size);
   background-color: var(--vp-code-block-bg);
-  border-radius: 8px;
-  margin-bottom: 16px;
 }
 
 :deep(.cm-editor .cm-content) {
@@ -265,9 +264,8 @@ button.run:hover {
 div.output {
   background-color: var(--vp-code-block-bg);
   line-height: var(--vp-code-line-height);
-  border-radius: 8px;
+  margin-top: -8px;
   padding: 20px 0;
-  margin: -8px 0 16px 0;
   box-sizing: content-box;
   overflow: auto;
   white-space: nowrap;
@@ -311,5 +309,15 @@ button.reset {
 
 button.reset:hover {
   color: var(--vp-c-brand-2);
+}
+
+@media(min-width: 640px) {
+  div.wrapper {
+    margin: 16px 0;
+  }
+
+  :deep(.cm-editor), div.output {
+    border-radius: 8px;
+  }
 }
 </style>
