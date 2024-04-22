@@ -18,7 +18,7 @@ In a VitePress `.md` file, place the `<Editor>` component directly after a code 
 import { Editor } from 'vitepress-python-editor'
 </script>
 
-```python
+```python:line-numbers
 name = input("What's your name? ")
 print(f"Hello {name}!")
 ```
@@ -26,6 +26,8 @@ print(f"Hello {name}!")
 ````
 
 The code block language must be exactly `python` and the `id` prop is required and should be unique among multiple `<Editor>` instances.
+
+The `:line-numbers` suffix is used to prevent layout shifts on load and can be omitted by setting `markdown: { lineNumbers: true }` in the VitePress config.
 
 
 ## Developing
