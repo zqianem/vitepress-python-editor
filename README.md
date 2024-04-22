@@ -14,9 +14,26 @@ Runs Python code locally in the browser and supports Python's `input()`.
 npm i vitepress-python-editor
 ```
 
-In a VitePress `.md` file, place the `<Editor>` component directly after a code block:
+First, include the Vite plugin in the VitePress config:
+
+```js
+// .vitepress/config.ts
+
+import { defaultConfig } from 'vitepress'
+import { vitepressPythonEditor } from 'vitepress-python-editor/vite-plugin'
+
+export defaultConfig({
+  vite: {
+    plugins: [vitepressPythonEditor()],
+  },
+})
+```
+
+Then, in a VitePress `.md` file, place the `<Editor>` component directly after a code block:
 
 ````md
+<!-- index.html -->
+
 <script setup>
 import { Editor } from 'vitepress-python-editor'
 </script>
