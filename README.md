@@ -1,6 +1,6 @@
 # VitePress Python Editor
 
-A code editor for the Python programming language for use in a VitePress site.
+A code editor for the Python programming language to be used in a VitePress site.
 
 Runs Python code locally in the browser and supports Python's `input()`.
 
@@ -45,9 +45,9 @@ print(f"Hello {name}!")
 <Editor id="hello" />
 ````
 
-The code block language must be exactly `python` and the `id` prop is required and should be unique among multiple `<Editor>` instances.
+Ensure that the code block language is exactly `python` and that the `id` prop is present and unique among all `<Editor>` instances on your VitePress site.
 
-The `:line-numbers` suffix is used to prevent layout shifts on load and can be omitted by setting `markdown: { lineNumbers: true }` in the VitePress config.
+The `:line-numbers` suffix can be omitted if `markdown: { lineNumbers: true }` is set in the VitePress config.
 
 
 ## Developing
