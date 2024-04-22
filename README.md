@@ -9,4 +9,6 @@ pnpm dev
 
 ## TODO
 
+- [ ] autosize the `<input>` based inputted text
+- [ ] have better focus styles for both editor and output input
 - [ ] publish this as a package and document usage
