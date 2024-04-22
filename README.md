@@ -10,6 +10,10 @@ Runs Python code locally in the browser and supports Python's `input()`.
 > [!WARNING]
 > This package is still a work-in-progress; these instructions do not yet work.
 
+> [!IMPORTANT]
+> This editor requires `SharedArrayBuffer`, so your site hosting must have the ability to set the appropriate HTTP headers. See the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#security_requirements) for details.
+
+
 ```sh
 npm i vitepress-python-editor
 ```
