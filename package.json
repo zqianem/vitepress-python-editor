@@ -2,7 +2,15 @@
   "name": "vitepress-python-editor",
   "version": "1.0.0",
   "description": "Editor component for VitePress that runs Python in the browser",
-  "keywords": ["vitepress", "python", "code", "editor", "vue", "codemirror", "pyodide"],
+  "keywords": [
+    "vitepress",
+    "python",
+    "code",
+    "editor",
+    "vue",
+    "codemirror",
+    "pyodide"
+  ],
   "homepage": "https://github.com/zqianem/vitepress-python-editor",
   "bugs": "https://github.com/zqianem/vitepress-python-editor/issues",
   "license": "MIT",
