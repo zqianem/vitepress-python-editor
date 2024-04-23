@@ -50,9 +50,6 @@ importers:
       vitepress:
         specifier: ^1.1.0
         version: 1.1.0(patch_hash=it2v77am4droqg4z7f4uat2kca)(@algolia/client-search@4.23.3)(@types/node@20.12.7)(postcss@8.4.38)(search-insights@2.13.0)
-      vitepress-python-editor:
-        specifier: 'link:'
-        version: 'link:'
 
 packages:
 

@@ -35,13 +35,14 @@
     "@codemirror/view": "^6.26.3",
     "codemirror": "^6.0.1",
     "isomorphic-fetch": "^3.0.0",
-    "pyodide": "^0.25.1",
     "vue": "^3.4.21"
+  },
+  "peerDependencies": {
+    "pyodide": "^0.25.1"
   },
   "devDependencies": {
     "vite": "^5.2.10",
-    "vitepress": "^1.1.0",
-    "vitepress-python-editor": "link:"
+    "vitepress": "^1.1.0"
   },
   "pnpm": {
     "patchedDependencies": {

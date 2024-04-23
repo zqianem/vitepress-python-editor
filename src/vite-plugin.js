@@ -30,16 +30,13 @@ export function vitepressPythonEditor(
         'pyodide-lock.json',
         'pyodide.asm.js',
         'pyodide.asm.wasm',
-        'python_stdlib.zip'
+        'python_stdlib.zip',
       ]
-      const pyodideDir = join(
-        'node_modules',
-        'vitepress-python-editor',
-        'node_modules',
-        'pyodide',
-      )
       for (const file of files) {
-        await copyFile(join(pyodideDir, file), join(assetsDir, file))
+        await copyFile(
+          join('node_modules/pyodide', file),
+          join(assetsDir, file),
+        )
       }
     },
   }
