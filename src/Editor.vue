@@ -70,14 +70,14 @@ onMounted(() => {
     doc: localStorage.getItem(storageKey.value) ?? initialCode
   })
   document.addEventListener('visibilitychange', () => {
-    const code = editor.state.doc.toString()
-    save(code)
+    save(editor.state.doc.toString())
   })
 
   mounted.value = true
 })
 
 onUnmounted(() => {
+  save(editor.state.doc.toString())
   worker.removeEventListener('message', handleMessage)
   editor.destroy()
 })

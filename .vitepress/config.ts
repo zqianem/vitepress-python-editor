@@ -12,4 +12,9 @@ export default defineConfig({
   vite: {
     plugins: [vitepressPythonEditor()],
   },
+  themeConfig: {
+    nav: [
+      { text: 'Page that does not exist', link: '/does-not-exist'},
+    ],
+  },
 })
