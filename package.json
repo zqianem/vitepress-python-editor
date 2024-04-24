@@ -33,8 +33,10 @@
     "@codemirror/state": "^6.4.1",
     "@codemirror/theme-one-dark": "^6.1.2",
     "@codemirror/view": "^6.26.3",
+    "@lezer/highlight": "^1.2.0",
     "codemirror": "^6.0.1",
     "isomorphic-fetch": "^3.0.0",
+    "tm-themes": "^1.4.0",
     "vue": "^3.4.26"
   },
   "peerDependencies": {

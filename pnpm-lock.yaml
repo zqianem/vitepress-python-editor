@@ -31,6 +31,9 @@ importers:
       '@codemirror/view':
         specifier: ^6.26.3
         version: 6.26.3
+      '@lezer/highlight':
+        specifier: ^1.2.0
+        version: 1.2.0
       codemirror:
         specifier: ^6.0.1
         version: 6.0.1(@lezer/common@1.2.1)
@@ -40,6 +43,9 @@ importers:
       pyodide:
         specifier: ^0.25.1
         version: 0.25.1
+      tm-themes:
+        specifier: ^1.4.0
+        version: 1.4.0
       vue:
         specifier: ^3.4.26
         version: 3.4.26
@@ -654,6 +660,9 @@ packages:
 
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
+
+  tm-themes@1.4.0:
+    resolution: {integrity: sha512-mn9Soc9hSiSitxoZcIXc2xhKVubbEZueDuStu9lCODjR4IC6qRaq/DR+s8v0POAPFlXX9Gn+puUEq5+gVzs9pA==}
 
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
@@ -1374,6 +1383,8 @@ snapshots:
   style-mod@4.1.2: {}
 
   tabbable@6.2.0: {}
+
+  tm-themes@1.4.0: {}
 
   to-fast-properties@2.0.0: {}
 
