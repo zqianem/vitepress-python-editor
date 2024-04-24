@@ -18,7 +18,7 @@ import { styling } from './codemirror-styling'
 
 interface Props {
   id: string,
-  maxHeight: string,
+  maxHeight?: string,
 }
 
 const props = withDefaults(defineProps<Props>(), {
