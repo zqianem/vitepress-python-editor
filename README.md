@@ -50,6 +50,8 @@ Ensure that the code block language is exactly `python` and that the `id` prop i
 
 The `:line-numbers` suffix can be omitted if `markdown: { lineNumbers: true }` is set in the VitePress config.
 
+An optional `maxHeight` prop is used to set a limit on the editor's height before scrolling. It defaults to `800px`.
+
 
 ## Developing
 

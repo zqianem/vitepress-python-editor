@@ -16,9 +16,14 @@ import { indentWithTab } from '@codemirror/commands'
 import { python } from '@codemirror/lang-python'
 import { styling } from './codemirror-styling'
 
-const props = defineProps<{
-  id: string
-}>()
+interface Props {
+  id: string,
+  maxHeight: string,
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  maxHeight: '800px'
+})
 
 const storageKey = computed(() => `code-editor-${props.id}`)
 
@@ -193,6 +198,12 @@ div.wrapper {
 :deep(.cm-editor) {
   font-size: var(--vp-code-font-size);
   background-color: var(--vp-code-block-bg);
+  max-height: v-bind('props.maxHeight');
+}
+
+:deep(.cm-scroller) {
+  scrollbar-width: thin;
+  overflow: auto;
 }
 
 :deep(.cm-editor .cm-content) {
