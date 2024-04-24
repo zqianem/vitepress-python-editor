@@ -214,6 +214,7 @@ div.wrapper {
 :deep(.cm-editor .cm-gutterElement) {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-width: 0;
   padding: 0;
 }
