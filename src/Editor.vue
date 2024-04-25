@@ -29,7 +29,6 @@ const props = withDefaults(defineProps<Props>(), {
 const storageKey = computed(() => `code-editor-${props.id}`)
 
 const mounted = ref(false)
-const output = ref('')
 const running = ref(false)
 const waitingForInput = ref(false)
 
@@ -97,7 +96,7 @@ async function handleMessage(e: MessageEvent) {
     await nextTick()
     input.value?.focus()
   }
-  if (e.data.output) output.value += e.data.output
+  if (e.data.output) updateOutput(e.data.output)
   if (e.data.done) running.value = false
 }
 
@@ -125,7 +124,7 @@ const buttonText = computed(() =>
   ready.value ? (running.value ? 'Running code...' : 'Run code') : 'Loading Pyodide...')
 
 const outputLines = computed(() => {
-  const lines = output.value.split('\n').map(line => line.replace(/.[\b]/g, ''))
+  const lines = output.value.map(l => l.join(''))
   if (lines[lines.length - 1] === '' && !waitingForInput.value) lines.pop()
   return lines.length === 0 ? [''] : lines
 })
@@ -133,7 +132,7 @@ const outputLines = computed(() => {
 function run() {
   const code = editor.state.doc.toString()
   save(code)
-  output.value = ''
+  resetOutput()
   running.value = true
   interruptBuffer[0] = 0
   worker.postMessage({ id: props.id, code })
@@ -153,12 +152,48 @@ function reset() {
     selection: { anchor: 0 },
   })
   editor.focus()
-  output.value = ''
+  resetOutput()
 }
 
 function save(code: string) {
   if (code === initialCode) localStorage.removeItem(storageKey.value)
   else localStorage.setItem(storageKey.value, code)
+}
+
+const output = ref<string[][]>([])
+const outputWidth = 72
+let outputRow = 0
+let outputCol = 0
+
+function updateOutput(raw: string) {
+  for (const c of raw) {
+    if (c === '\n') {
+      outputRow++
+      outputCol = 0
+      output.value[outputRow] = Array.from({ length: outputWidth })
+      continue
+    }
+    if (c === '\b') {
+      outputCol--
+      if (outputCol < 0) {
+        outputRow--
+        outputCol = outputWidth - 1
+      }
+      if (outputRow < 0) {
+        outputRow = 0
+        outputCol = 0
+      }
+      continue
+    }
+    output.value[outputRow][outputCol] = c
+    outputCol++
+  }
+}
+
+function resetOutput() {
+  output.value = [Array.from({ length: outputWidth })]
+  outputRow = 0
+  outputCol = 0
 }
 </script>
 
