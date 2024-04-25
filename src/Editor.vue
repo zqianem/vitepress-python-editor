@@ -14,6 +14,7 @@ import { EditorView, minimalSetup } from 'codemirror'
 import { lineNumbers, highlightActiveLine, keymap } from '@codemirror/view'
 import { indentWithTab } from '@codemirror/commands'
 import { python } from '@codemirror/lang-python'
+import { indentUnit } from '@codemirror/language'
 import { styling } from './codemirror-styling'
 
 interface Props {
@@ -69,6 +70,7 @@ onMounted(() => {
       lineNumbers(),
       keymap.of([indentWithTab]),
       python(),
+      indentUnit.of('    '),
       styling,
     ],
     parent: parent.value!,

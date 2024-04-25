@@ -10,9 +10,9 @@ import Editor from 'vitepress-python-editor'
 name = input("What's your name? ")
 
 if name:
-  print(f"Hello {name}!")
+    print(f"Hello {name}!")
 else:
-  print(f"Hello stranger!")
+    print(f"Hello stranger!")
 ```
 <Editor id="hello" />
 
@@ -22,11 +22,11 @@ else:
 import time
 
 for i in range(6):
-  if i % 2 == 0:
-    print('tick')
-  else:
-    print('tock')
-  time.sleep(1)
+    if i % 2 == 0:
+        print('tick')
+    else:
+        print('tock')
+    time.sleep(1)
 ```
 <Editor id="clock" />
 
@@ -35,8 +35,8 @@ for i in range(6):
 ```python
 x = 0
 while True:
-  x = x + 1
-  # print(x) # uncommenting this line makes "stop running" fail
+    x = x + 1
+    # print(x) # uncommenting this line makes "stop running" fail
 ```
 <Editor id="loop" />
 
