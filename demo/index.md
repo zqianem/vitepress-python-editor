@@ -30,6 +30,21 @@ for i in range(6):
 ```
 <Editor id="clock" />
 
+## Spinner
+
+```python
+import itertools, sys, time
+
+spinner = itertools.cycle(['-', '/', '|', '\\'])
+
+for _ in range(100):
+    print(next(spinner), end='')
+    sys.stdout.flush()
+    time.sleep(0.1)
+    print('\b', end='')
+```
+<Editor id="spinner" />
+
 ## Infinite loop
 
 ```python

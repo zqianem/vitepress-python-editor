@@ -125,7 +125,7 @@ const buttonText = computed(() =>
   ready.value ? (running.value ? 'Running code...' : 'Run code') : 'Loading Pyodide...')
 
 const outputLines = computed(() => {
-  const lines = output.value.split('\n')
+  const lines = output.value.split('\n').map(line => line.replace(/.[\b]/g, ''))
   if (lines[lines.length - 1] === '' && !waitingForInput.value) lines.pop()
   return lines.length === 0 ? [''] : lines
 })
