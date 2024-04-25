@@ -1,8 +1,8 @@
-diff --git a/dist/node/serve-Csn-CKFx.js b/dist/node/serve-Csn-CKFx.js
-index 5815d5154f0fa65ab51b30e7f73fd20ae6a9d9fe..bbd2729011699ab51de7e0d73f6c0ab0b8c2e279 100644
---- a/dist/node/serve-Csn-CKFx.js
-+++ b/dist/node/serve-Csn-CKFx.js
-@@ -50200,6 +50200,9 @@ async function serve(options = {}) {
+diff --git a/dist/node/serve-DrVGLhCg.js b/dist/node/serve-DrVGLhCg.js
+index 48e051436530d9361db13fe37898a98d0e18fe0d..0b7168c2c06eee85e86cb40fa601df545e7dbad5 100644
+--- a/dist/node/serve-DrVGLhCg.js
++++ b/dist/node/serve-DrVGLhCg.js
+@@ -50279,6 +50279,9 @@ async function serve(options = {}) {
        if (notAnAsset(pathname)) {
          res.setHeader("cache-control", "no-cache");
        }
