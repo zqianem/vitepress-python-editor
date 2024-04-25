@@ -22,7 +22,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  maxHeight: '800px'
+  maxHeight: '344px' // 2:1 ratio with VitePress theme's max width of 688px
 })
 
 const storageKey = computed(() => `code-editor-${props.id}`)
