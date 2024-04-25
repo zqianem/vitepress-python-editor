@@ -23,9 +23,9 @@ import time
 
 for i in range(6):
     if i % 2 == 0:
-        print('tick')
+        print("tick")
     else:
-        print('tock')
+        print("tock")
     time.sleep(1)
 ```
 <Editor id="clock" />
@@ -35,10 +35,10 @@ for i in range(6):
 ```python
 import itertools, sys, time
 
-spinner = itertools.cycle(['-', '/', '|', '\\'])
+spinner = itertools.cycle(["-", "/", "|", "\\"])
 
 for _ in range(100):
-    print(f'\b{next(spinner)}', end='')
+    print(f"\b{next(spinner)}", end="")
     sys.stdout.flush()
     time.sleep(0.1)
 ```
