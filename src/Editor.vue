@@ -238,6 +238,10 @@ div.wrapper {
   max-height: v-bind('props.maxHeight');
 }
 
+:deep(.cm-editor.cm-focused) {
+  outline: 1px solid var(--vp-c-brand-1);
+}
+
 :deep(.cm-scroller) {
   scrollbar-width: thin;
   overflow: auto;
@@ -320,12 +324,17 @@ div.output {
   white-space: nowrap;
 }
 
+div.output:has(input:focus) {
+  outline: 1px solid var(--vp-c-brand-1);
+}
+
 div.output code {
   color: revert;
   background: none;
   width: 100%;
   padding: 0 24px;
   white-space: pre;
+  cursor: default;
 }
 
 div.output code:last-of-type {
@@ -358,6 +367,10 @@ button.reset {
 
 button.reset:hover {
   color: var(--vp-c-brand-2);
+}
+
+button:focus-visible {
+  outline: revert;
 }
 
 @media(min-width: 640px) {

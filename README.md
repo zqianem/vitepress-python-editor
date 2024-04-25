@@ -62,5 +62,4 @@ pnpm dev
 
 ## TODO
 
-- [ ] have better focus styles for both editor and output input
 - [ ] match editor syntax highlighting with VitePress default theme
