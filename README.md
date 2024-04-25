@@ -62,4 +62,5 @@ pnpm dev
 
 ## TODO
 
+- [ ] publish a documentation site and move most of this README to it
 - [ ] match editor syntax highlighting with VitePress default theme
