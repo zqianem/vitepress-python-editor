@@ -66,7 +66,7 @@ class PerfCounter:
 
     @staticmethod
     def format_performance_for_print(name: str, endtime: int, starttime: int) -> str:
-        return f"{' '*(23-len(name))}{name}   {round((endtime-starttime)/1_000_000, 5)}"
+        return f"{" "*(23-len(name))}{name}   {round((endtime-starttime)/1_000_000, 5)}"
 
     def run(self, name: str, f, *args, **kwargs):
         starttime = time.perf_counter_ns()
@@ -86,7 +86,7 @@ def run_python(filename: str):
     print(f"parsing '{filename}' using python grammar")
     perf_counter = PerfCounter()
 
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         source_code = f.read()
     source_code = python.Preprocessor.run(source_code)
 
@@ -129,7 +129,7 @@ def run_python(filename: str):
 
 def run_c(filename: str):
     config = alpaca.config.parser.run("./src/c/c_grammar.gm")
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         txt = f.read()
     tokens = alpaca.lexer.run(text=txt, config=config, callback=c.Callback)
     ast = alpaca.parser.run(config=config, tokens=tokens, builder=c.Builder())
@@ -156,7 +156,7 @@ def run_eisen(source_code_filename: str, verbose: bool = False):
         alpaca.config.parser.run,
         filename="./src/eisen/grammar.gm")
 
-    with open(source_code_filename, 'r') as f:
+    with open(source_code_filename, "r") as f:
         source_code = f.read()
 
     # Alpaca's lexer breaks the source code into tokens.
@@ -195,7 +195,7 @@ def run_eisen(source_code_filename: str, verbose: bool = False):
 
     proto_code = python.Writer().run(ast)
     code = eisen.ToPython.builtins + python.PostProcessor.run(proto_code) + eisen.ToPython.lmda + "\nmain___d_void_I__voidb()"
-    with open("./build/test.py", 'w') as f:
+    with open("./build/test.py", "w") as f:
         f.write(code)
 
     subprocess.run(["python", "./build/test.py"])
@@ -217,7 +217,7 @@ def run_eisen(source_code_filename: str, verbose: bool = False):
     # code = c.Writer().run(c_ast)
     # code = "#include <stdio.h> \n" + code
     # # print(code)
-    # with open("./build/test.c", 'w') as f:
+    # with open("./build/test.c", "w") as f:
     #     f.write(code)
 
     # # run c code
@@ -236,7 +236,7 @@ def run(lang: str, filename: str, verbose: bool = False):
 
 
 def run_types(filename: str):
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         txt = f.read()
 
     ast = alpaca.types.parser.run(txt)
@@ -285,7 +285,7 @@ def add_test(name: str):
         print("INFO: test already exists, not creating it again.")
         return
 
-    with open(full_path, 'w') as f:
+    with open(full_path, "w") as f:
         f.write(tomlheader.format(name))
     subprocess.run(["code", "-r", full_path])
 
@@ -332,6 +332,6 @@ if __name__ == "__main__":
 
     print(delim)
 
-print('Eisen!')
+print("Eisen!")
 ```
 <Editor id="eisen" />
