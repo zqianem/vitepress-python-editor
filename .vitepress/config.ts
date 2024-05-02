@@ -5,7 +5,7 @@ import { vitepressPythonEditor } from 'vitepress-python-editor/vite-plugin'
 export default defineConfig({
   title: 'VitePress Python Editor',
   head: [['link', { rel: 'icon', href: '/vitepress-logo-mini.svg' }]],
-  srcDir: 'demo',
+  srcDir: 'docs',
   markdown: {
     lineNumbers: true,
   },
@@ -13,8 +13,18 @@ export default defineConfig({
     plugins: [vitepressPythonEditor()],
   },
   themeConfig: {
-    nav: [
-      { text: 'Page that does not exist', link: '/does-not-exist'},
+    search: {
+      provider: 'local',
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/zqianem/vitepress-python-editor' }
+    ],
+    sidebar: [
+      { text: 'Overview', link: '/' },
+      { text: 'Installation', link: '/installation' },
+      { text: 'Usage', link: '/usage' },
+      { text: 'Configuration', link: '/configuration' },
+      { text: 'Examples', link: '/examples' },
     ],
   },
 })
