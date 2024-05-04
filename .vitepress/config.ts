@@ -20,7 +20,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/zqianem/vitepress-python-editor' }
     ],
     sidebar: [
-      { text: 'Overview', link: '/' },
+      { text: 'What is this?', link: '/' },
       { text: 'Installation', link: '/installation' },
       { text: 'Usage', link: '/usage' },
       { text: 'Configuration', link: '/configuration' },
