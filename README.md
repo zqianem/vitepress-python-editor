@@ -36,7 +36,7 @@ Then, in a VitePress `.md` file, place the `<Editor>` component directly after a
 <!-- index.html -->
 
 <script setup>
-import { Editor } from 'vitepress-python-editor'
+import Editor from 'vitepress-python-editor'
 </script>
 
 ```python:line-numbers
