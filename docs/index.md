@@ -8,9 +8,15 @@ The **VitePress Python Editor** is a UI component for the [VitePress](https://vi
 
 It is implemented in [Vue](https://vuejs.org/) using [CodeMirror](https://codemirror.net/) and [Pyodide](https://pyodide.org/).
 
-## A quick demo
+## Try it out!
 
-Try it out! Edit the code and press the play button (▶️) below:
+::: details Note to keyboard navigation users
+To move focus out of the editor, press `Escape` before `Tab` or `Shift-Tab`.
+
+By default, `Tab` and `Shift-Tab` will indent and dedent the code, respectively.
+:::
+
+Edit the code and press the play button ▶️:
 
 ```python
 # Change this to say "Hello world!"
@@ -37,6 +43,7 @@ Visit the [Examples](/examples) page for more demos.
 - Auto-saves editor changes to [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) before leaving page and each run
 - Runs in a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) to avoid blocking the main UI thread
 - Shares one Pyodide instance across multiple editors in a session for fast loading times
+- Handles the Tab key in an accessible way via [CodeMirror](https://codemirror.net/examples/tab/)
 
 ## Next steps
 
