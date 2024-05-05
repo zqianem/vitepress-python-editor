@@ -1,9 +1,5 @@
 # Demo
 
-<script setup>
-import Editor from 'vitepress-python-editor'
-</script>
-
 ## Hello world
 
 ```python

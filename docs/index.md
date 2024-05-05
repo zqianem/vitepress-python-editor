@@ -1,9 +1,5 @@
 # What is this?
 
-<script setup>
-import Editor from 'vitepress-python-editor'
-</script>
-
 The **VitePress Python Editor** is a UI component for the [VitePress](https://vitepress.dev/) static site generator that enables editing and running [Python](https://www.python.org/) programs locally in the browser, originally developed to teach students how to code.
 
 It is implemented in [Vue](https://vuejs.org/) using [CodeMirror](https://codemirror.net/) and [Pyodide](https://pyodide.org/).
