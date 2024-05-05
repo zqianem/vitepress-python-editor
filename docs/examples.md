@@ -2,7 +2,7 @@
 
 ## Hello world
 
-```python
+```python:line-numbers
 name = input("What's your name? ")
 
 if name:
@@ -14,7 +14,7 @@ else:
 
 ## Tick tock
 
-```python
+```python:line-numbers
 import time
 
 for i in range(6):
@@ -28,7 +28,7 @@ for i in range(6):
 
 ## Spinner
 
-```python
+```python:line-numbers
 import itertools, sys, time
 
 spinner = itertools.cycle(["-", "/", "|", "\\"])
@@ -42,7 +42,7 @@ for _ in range(100):
 
 ## Infinite loop
 
-```python
+```python:line-numbers
 x = 0
 while True:
     x = x + 1
@@ -54,7 +54,7 @@ See https://github.com/pyodide/pyodide/discussions/4595 for details.
 
 ## A lot of code
 
-```python
+```python:line-numbers
 class PerfCounter:
     def __init__(self) -> None:
         self.start = time.perf_counter_ns()

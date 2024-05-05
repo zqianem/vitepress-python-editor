@@ -6,9 +6,6 @@ export default defineConfig({
   title: 'VitePress Python Editor',
   head: [['link', { rel: 'icon', href: '/vitepress-logo-mini.svg' }]],
   srcDir: 'docs',
-  markdown: {
-    lineNumbers: true,
-  },
   vite: {
     plugins: [vitepressPythonEditor()],
   },

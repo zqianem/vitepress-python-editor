@@ -14,7 +14,7 @@ By default, `Tab` and `Shift-Tab` will indent and dedent the code, respectively.
 
 Edit the code and press the play button ▶️:
 
-```python
+```python:line-numbers
 # Change this to say "Hello world!"
 print("Hello!")
 ```
@@ -22,7 +22,7 @@ print("Hello!")
 
 Support for Python's `input()` is built-in:
 
-```python
+```python:line-numbers
 name = input("What's your name? ")
 
 if name:
