@@ -71,9 +71,9 @@ export default {
 ```
 
 ```ts [.vitepress/theme/index.ts]
-import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import Editor from 'vitepress-python-editor'
+import type { Theme } from 'vitepress'
 
 export default {
   extends: DefaultTheme,
