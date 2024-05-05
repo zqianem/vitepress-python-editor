@@ -1,4 +1,4 @@
-# Demo
+# Examples
 
 ## Hello world
 
