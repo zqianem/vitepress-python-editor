@@ -12,6 +12,21 @@ else:
 ```
 <Editor id="hello" />
 
+## Fibonacci sequence
+
+```python:line-numbers
+def fib(n):
+    if n < 0:
+        raise ValueError("must be non-negative")
+    elif n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+print(fib(-1))
+```
+<Editor id="fib" />
+
 ## Tick tock
 
 ```python:line-numbers
