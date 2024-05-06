@@ -54,7 +54,7 @@ export defaultConfig({
 
 ## 3. Register global component
 
-Finally, register the editor as a [VitePress global component](https://vitepress.dev/guide/extending-default-theme#registering-global-components):
+Next, register the editor as a [VitePress global component](https://vitepress.dev/guide/extending-default-theme#registering-global-components):
 
 ::: code-group
 ```js [.vitepress/theme/index.js]
@@ -85,3 +85,61 @@ export default {
 :::
 
 This avoids the need to import the editor with a `<script setup>` block in each `.md` file.
+
+## 4. Set HTTP headers
+
+Finally, on your website host, add the following headers to fulfill the [security requirements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#security_requirements) for `SharedArrayBuffer`:
+
+```HTTP
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+```
+
+The exact config will vary by provider. Here are some examples:
+
+::: code-group
+
+```toml [netlify.toml]
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+```
+
+```json [vercel.json]
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "require-corp"
+        }
+      ]
+    } 
+  ]
+}
+```
+
+```txt [_headers]
+/*
+  Cross-Origin-Opener-Policy = "same-origin"
+  Cross-Origin-Embedder-Policy = "require-corp"
+```
+:::
+
+For details, see the specific documentation for each provider:
+
+- [Netlify](https://docs.netlify.com/configure-builds/file-based-configuration/#headers)
+- [Vercel](https://vercel.com/docs/projects/project-configuration#headers)
+- [Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/headers/)
+
+::: tip
+As of writing, [GitHub Pages](https://pages.github.com/) does not have an easy way to add these headers. It is suggested to use one of the providers above as an alternative, all of which have serviceable free plans.
+:::
