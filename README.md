@@ -1,10 +1,6 @@
 # VitePress Python Editor
 
-A code editor for the Python programming language to be used in a VitePress site.
-
-Runs Python code locally in the browser and supports Python's `input()`.
-
-Visit the [documentation site](https://vitepress-python-editor.netlify.app/) for more info.
+Visit the [docs site](https://vitepress-python-editor.netlify.app/) for live demos and more info.
 
 ## Developing
 
