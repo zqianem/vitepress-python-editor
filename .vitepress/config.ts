@@ -4,6 +4,7 @@ import { vitepressPythonEditor } from 'vitepress-python-editor/vite-plugin'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'VitePress Python Editor',
+  description: 'Docs and demos for vitepress-python-editor',
   head: [['link', { rel: 'icon', href: '/vitepress-logo-mini.svg' }]],
   srcDir: 'docs',
   vite: {
