@@ -11,7 +11,7 @@
     "codemirror",
     "pyodide"
   ],
-  "homepage": "https://github.com/zqianem/vitepress-python-editor",
+  "homepage": "https://vitepress-python-editor.netlify.app/",
   "bugs": "https://github.com/zqianem/vitepress-python-editor/issues",
   "license": "MIT",
   "author": "Em Zhan <zqianem@gmail.com>",
