@@ -1,6 +1,6 @@
-# Installation
+# Install & Config
 
-Installing **VitePress Python Editor** requires a few steps, each detailed below.
+Before using the editor, take the steps detailed below.
 
 ## 1. Add dependency
 

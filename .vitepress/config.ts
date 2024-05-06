@@ -18,9 +18,8 @@ export default defineConfig({
     ],
     sidebar: [
       { text: 'What is this?', link: '/' },
-      { text: 'Installation', link: '/installation' },
+      { text: 'Install & Config', link: '/install-and-config' },
       { text: 'Usage', link: '/usage' },
-      { text: 'Configuration', link: '/configuration' },
       { text: 'Examples', link: '/examples' },
     ],
   },

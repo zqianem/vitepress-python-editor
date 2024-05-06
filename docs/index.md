@@ -39,8 +39,10 @@ Visit the [Examples](/examples) page for more demos.
 - Auto-saves editor changes to [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) before leaving page and each run
 - Runs in a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) to avoid blocking the main UI thread
 - Shares one Pyodide instance across multiple editors in a session for fast loading times
-- Handles the Tab key in an accessible way via [CodeMirror](https://codemirror.net/examples/tab/)
+- Handles the Tab key in an accessible way ([CodeMirror docs](https://codemirror.net/examples/tab/))
+- Undo and redo changes via `Ctrl+Z` and `Ctrl+Shift+Z` keyboard shortcuts
 
 ## Next steps
 
-If this all sounds good to you, head on over to the [Installation](/installation) page.
+- [Install & Config](/install-and-config): steps to begin adding the editor to your own VitePress project
+- [Usage](/usage):  see how the editor is invoked from within `.md` files
