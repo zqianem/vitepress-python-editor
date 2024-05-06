@@ -6,6 +6,7 @@ export default defineConfig({
   title: 'VitePress Python Editor',
   description: 'Docs and demos for vitepress-python-editor',
   head: [['link', { rel: 'icon', href: '/vitepress-logo-mini.svg' }]],
+  cleanUrls: true,
   srcDir: 'docs',
   vite: {
     plugins: [vitepressPythonEditor()],
