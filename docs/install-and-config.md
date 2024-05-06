@@ -35,18 +35,26 @@ import { vitepressPythonEditor } from 'vitepress-python-editor/vite-plugin'
 
 export defaultConfig({
   vite: {
-    plugins: [vitepressPythonEditor()],
+    plugins: [
+      vitepressPythonEditor(),
+    ],
   },
 })
 ```
+:::
 
-```ts [.vitepress/config.ts]
+If your VitePress [assetsDir](https://vitepress.dev/reference/site-config#assetsdir) does not resolve to `.vitepress/dist/assets` (relative to the project root), pass the fully resolved path to the plugin like so:
+
+::: code-group
+```js{7} [.vitepress/config.js]
 import { defaultConfig } from 'vitepress'
 import { vitepressPythonEditor } from 'vitepress-python-editor/vite-plugin'
 
 export defaultConfig({
   vite: {
-    plugins: [vitepressPythonEditor()],
+    plugins: [
+      vitepressPythonEditor({ assetsDir: 'docs/.vitepress/dist/assets' }),
+    ],
   },
 })
 ```
