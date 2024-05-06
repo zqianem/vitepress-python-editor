@@ -59,3 +59,21 @@ print(fib(10))
 <Editor id="fib" />
 
 When the `reset editor` button is pressed, the editor's contents will be reverted back to this initial code. The user can undo this with `Ctrl+Z`.
+
+## Max height
+
+By default, the editor has a max height of `344px`. This can be changed like so:
+
+````md
+```python:line-numbers
+```
+<Editor id="short" max-height="200px" />
+````
+
+This produces the following (try adding more lines):
+
+```python:line-numbers
+```
+<Editor id="short" max-height="200px" />
+
+Notice that the editor starts scrolling after ~7 lines now, instead of ~13.
