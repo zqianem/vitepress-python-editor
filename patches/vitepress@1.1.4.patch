@@ -1,7 +1,7 @@
-diff --git a/dist/node/serve-DrVGLhCg.js b/dist/node/serve-DrVGLhCg.js
-index 48e051436530d9361db13fe37898a98d0e18fe0d..0b7168c2c06eee85e86cb40fa601df545e7dbad5 100644
---- a/dist/node/serve-DrVGLhCg.js
-+++ b/dist/node/serve-DrVGLhCg.js
+diff --git a/dist/node/serve-CXVdC751.js b/dist/node/serve-CXVdC751.js
+index bad35030b46e57d42803d5ca7f2402419f03acb9..bc0cbb8db9f1ffcaf6972826c0b52e13999ee63e 100644
+--- a/dist/node/serve-CXVdC751.js
++++ b/dist/node/serve-CXVdC751.js
 @@ -50279,6 +50279,9 @@ async function serve(options = {}) {
        if (notAnAsset(pathname)) {
          res.setHeader("cache-control", "no-cache");
