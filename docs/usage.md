@@ -1,4 +1,4 @@
-# Usage
+# Usage 🛠️
 
 Adding the editor to `.md` files is similar to using fenced code blocks.
 

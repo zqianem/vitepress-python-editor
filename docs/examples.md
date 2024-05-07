@@ -1,4 +1,4 @@
-# Examples
+# Examples 🧰
 
 ## Hello world
 

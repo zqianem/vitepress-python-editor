@@ -1,4 +1,8 @@
-# What is this?
+---
+title: VitePress Python Editor
+---
+
+# Introduction ✌️🐍📝
 
 **VitePress Python Editor** is a UI component for the [VitePress](https://vitepress.dev/) static site generator that enables editing and running [Python](https://www.python.org/) programs locally in the browser, originally developed to teach students how to code.
 
@@ -44,5 +48,5 @@ Visit the [Examples](/examples) page for more demos.
 
 ## Next steps
 
-- [Install & Config](/install-and-config): steps to begin adding the editor to your own VitePress project
+- [Install and config](/install-and-config): steps to begin adding the editor to your own VitePress project
 - [Usage](/usage):  see how the editor is invoked from within `.md` files
