@@ -1,4 +1,4 @@
-# Install and config ⬇️⚙️
+# Install and config 🪛
 
 Before using the editor, take the steps detailed below.
 
