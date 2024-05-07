@@ -12,6 +12,8 @@ export default defineConfig({
     plugins: [vitepressPythonEditor()],
   },
   themeConfig: {
+    logo: '/vitepress-logo-mini.svg',
+    siteTitle: 'Python Editor',
     search: {
       provider: 'local',
     },
