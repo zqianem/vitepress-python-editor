@@ -22,7 +22,7 @@ export default defineConfig({
     ],
     sidebar: [
       { text: 'Introduction', link: '/' },
-      { text: 'Install and config', link: '/install-and-config' },
+      { text: 'Installation', link: '/installation' },
       { text: 'Usage', link: '/usage' },
       { text: 'Examples', link: '/examples' },
     ],

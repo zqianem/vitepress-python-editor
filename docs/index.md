@@ -48,5 +48,5 @@ Visit the [Examples](/examples) page for more demos.
 
 ## Next steps
 
-- [Install and config](/install-and-config): steps to begin adding the editor to your own VitePress project
+- [Installation](/installation): steps to begin adding the editor to your own VitePress project
 - [Usage](/usage):  see how the editor is invoked from within `.md` files

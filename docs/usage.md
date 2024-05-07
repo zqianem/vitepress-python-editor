@@ -1,6 +1,6 @@
 # Usage 🛠️
 
-Adding the editor to `.md` files is similar to using fenced code blocks.
+Using the editor in `.md` files is similar to using fenced code blocks.
 
 ## Basic usage
 

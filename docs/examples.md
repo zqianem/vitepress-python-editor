@@ -1,5 +1,7 @@
 # Examples 🧰
 
+Here are some Python code examples demoing various editor features.
+
 ## Hello world
 
 ```python:line-numbers
