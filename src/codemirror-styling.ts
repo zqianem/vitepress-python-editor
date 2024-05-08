@@ -54,7 +54,7 @@ function tmScopeToCmTag(scope: string | string[]) {
     const tags: Tag[] = []
     for (const s of scope) {
       const tag = getLezerTag(s)
-      if (tag) tags.push(tag)
+      if (tag) Array.isArray(tag) ? tags.push(...tag) : tags.push(tag)
     }
     return tags.length > 0 ? tags : false
   }
@@ -67,10 +67,111 @@ function getLezerTag(scope: string) {
   switch (scope) {
     case 'comment':
       return t.comment
+    case 'comment.line':
+    case 'comment.line.double-slash':
+    case 'comment.line.double-dash':
+    case 'comment.line.number-sign':
+    case 'comment.line.percentage':
+      return t.lineComment
+    case 'comment.block':
+      return t.blockComment
+    case 'comment.block.documentation':
+      return t.docComment
+    case 'constant':
+      return t.literal
+    case 'constant.numeric':
+      return t.number
+    case 'constant.character':
+      return t.character
+    case 'constant.character.escape':
+      return t.escape
+    case 'constant.language':
+      return t.bool
+    case 'constant.other':
+      return t.color
+    // case 'entity':
+    case 'entity.name':
+      // return t.name
+    case 'entity.name.function':
+      return t.function(t.name)
+    case 'entity.name.type':
+      return [t.typeName, t.className]
+    case 'entity.name.tag':
+      return t.tagName
+    // case 'entity.name.section':
+    // case 'entity.other':
+    case 'entity.other.inherited-class':
+      return t.className
+    case 'entity.other.attribute-name':
+      return t.attributeName
+    case 'invalid':
+    case 'invalid.illegal':
+    case 'invalid.deprecated':
+      return t.invalid
     case 'keyword':
       return t.keyword
+    case 'keyword.control':
+      return t.controlKeyword
+    case 'keyword.operator':
+      return [t.operator]
+    case 'keyword.other':
+      return [t.definitionKeyword, t.moduleKeyword]
+    case 'meta':
+      return t.meta
+    case 'markup':
+      return t.content
+    case 'markup.underline':
+    case 'markup.underline.link':
+      return t.link
+    case 'markup.bold':
+      return t.strong
+    case 'markup.heading':
+      return t.heading
+    case 'markup.italic':
+      return t.emphasis
+    case 'markup.list':
+    case 'markup.list.numbered':
+    case 'markup.list.unnumbered':
+      return t.list
+    case 'markup.quote':
+      return t.quote
+    case 'markup.raw':
+      return t.monospace
+    // case 'markup.other':
+    // case 'storage':
+    // case 'storage.type':
+    // case 'storage.modifier':
     case 'string':
+    case 'string.quoted':
+    case 'string.quoted.single':
+    case 'string.quoted.double':
       return t.string
+    case 'string.quoted.triple':
+      return t.docString
+    // case 'string.quoted.other':
+    // case 'string.unquoted':
+    // case 'string.interpolated':
+    case 'string.regexp':
+      return t.regexp
+    // case 'string.other':
+    case 'support':
+    case 'support.function':
+      return t.standard(t.function(t.name))
+    case 'support.class':
+      return t.standard(t.className)
+    case 'support.type':
+      return t.standard(t.typeName)
+    case 'support.constant':
+      return t.standard(t.literal)
+    case 'support.variable':
+    case 'support.other':
+      return t.standard(t.name)
+    // case 'variable':
+    case 'variable.parameter':
+      return t.function(t.keyword)
+    case 'variable.language':
+      return t.self
+    case 'variable.other':
     default:
       return false
   }
