@@ -1,7 +1,9 @@
 import { EditorView, ViewPlugin } from '@codemirror/view'
 import { StateEffect, StateField } from '@codemirror/state'
-import { HighlightStyle, syntaxHighlighting } from '@codemirror/language'
+import { HighlightStyle, LanguageSupport, syntaxHighlighting } from '@codemirror/language'
 import { tags as t } from '@lezer/highlight'
+import { pythonLanguage } from '@codemirror/lang-python'
+import { pythonBuiltin } from './pythonBuiltin'
 
 const isDark = () => document.documentElement.classList.contains('dark')
 
@@ -27,6 +29,13 @@ const darkMode = StateField.define<boolean>({
 const theme = EditorView.baseTheme({
   '&dark .cm-cursor': {
     borderLeftColor: 'white',
+  },
+  // See https://github.com/jupyterlab/jupyterlab/pull/15805
+  '.cm-builtin > span': {
+    color: '#005CC5',
+  },
+  '&dark .cm-builtin > span': {
+    color: '#79B8FF',
   },
 })
 
@@ -55,4 +64,5 @@ export const styling = [
   theme,
   lightHighlight,
   darkHighlight,
+  new LanguageSupport(pythonLanguage, pythonBuiltin(pythonLanguage)),
 ]

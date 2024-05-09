@@ -32,6 +32,7 @@
     "@codemirror/language": "^6.10.1",
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.3",
+    "@lezer/common": "^1.2.1",
     "@lezer/highlight": "^1.2.0",
     "isomorphic-fetch": "^3.0.0",
     "vue": "^3.4.26"

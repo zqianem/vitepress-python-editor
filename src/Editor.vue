@@ -19,7 +19,6 @@ import {
   highlightActiveLine,
 } from '@codemirror/view'
 import { history, defaultKeymap, historyKeymap, indentWithTab } from '@codemirror/commands'
-import { python } from '@codemirror/lang-python'
 import { indentUnit } from '@codemirror/language'
 import { styling } from './codemirror-styling'
 
@@ -76,7 +75,6 @@ onMounted(() => {
       keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab]),
       lineNumbers(),
       highlightActiveLine(),
-      python(),
       indentUnit.of('    '),
       styling,
     ],
