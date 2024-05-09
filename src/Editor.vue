@@ -10,9 +10,15 @@ const encoder = new TextEncoder()
 
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted, watchEffect, nextTick } from 'vue'
-import { EditorView, minimalSetup } from 'codemirror'
-import { lineNumbers, highlightActiveLine, keymap } from '@codemirror/view'
-import { indentWithTab } from '@codemirror/commands'
+import {
+  EditorView,
+  highlightSpecialChars,
+  drawSelection,
+  keymap,
+  lineNumbers,
+  highlightActiveLine,
+} from '@codemirror/view'
+import { history, defaultKeymap, historyKeymap, indentWithTab } from '@codemirror/commands'
 import { python } from '@codemirror/lang-python'
 import { indentUnit } from '@codemirror/language'
 import { styling } from './codemirror-styling'
@@ -64,10 +70,12 @@ onMounted(() => {
 
   editor = new EditorView({
     extensions: [
-      minimalSetup,
-      highlightActiveLine(),
+      highlightSpecialChars(),
+      history(),
+      drawSelection(),
+      keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab]),
       lineNumbers(),
-      keymap.of([indentWithTab]),
+      highlightActiveLine(),
       python(),
       indentUnit.of('    '),
       styling,
