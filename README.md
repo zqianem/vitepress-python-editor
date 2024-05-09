@@ -13,7 +13,3 @@ Visit the [docs site](https://vitepress-python-editor.netlify.app/) for live dem
 pnpm i
 pnpm dev
 ```
-
-## TODO
-
-- match editor syntax highlighting with VitePress default theme

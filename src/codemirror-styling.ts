@@ -1,7 +1,7 @@
 import { EditorView, ViewPlugin } from '@codemirror/view'
 import { StateEffect, StateField } from '@codemirror/state'
-import { HighlightStyle, defaultHighlightStyle, syntaxHighlighting } from '@codemirror/language'
-import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark'
+import { HighlightStyle, syntaxHighlighting } from '@codemirror/language'
+import { tags as t } from '@lezer/highlight'
 
 const isDark = () => document.documentElement.classList.contains('dark')
 
@@ -30,9 +30,29 @@ const theme = EditorView.baseTheme({
   },
 })
 
+// https://lezer.codemirror.net/docs/ref/#highlight.tags
+
+const lightHighlight = syntaxHighlighting(HighlightStyle.define([
+  { tag: t.comment, color: '#6A737D' },
+  { tag: t.string, color: '#032F62' },
+  { tag: [t.literal, t.null, t.brace], color: '#005CC5' },
+  { tag: [t.name, t.derefOperator], color: '#24292E' },
+  { tag: [t.operator, t.keyword], color: '#D73A49' },
+  { tag: t.definition(t.name), color: '#6F42C1' },
+], { themeType: 'light' }))
+
+const darkHighlight = syntaxHighlighting(HighlightStyle.define([
+  { tag: t.comment, color: '#6A737D' },
+  { tag: t.string, color: '#9ECBFF' },
+  { tag: [t.literal, t.null, t.brace], color: '#79B8FF' },
+  { tag: [t.name, t.derefOperator], color: '#E1E4E8' },
+  { tag: [t.operator, t.keyword], color: '#F97583' },
+  { tag: t.definition(t.name), color: '#B392F0' },
+], { themeType: 'dark' }))
+
 export const styling = [
   darkMode,
   theme,
-  syntaxHighlighting(HighlightStyle.define(defaultHighlightStyle.specs, { themeType: 'light' })),
-  syntaxHighlighting(HighlightStyle.define(oneDarkHighlightStyle.specs, { themeType: 'dark' }))
+  lightHighlight,
+  darkHighlight,
 ]
