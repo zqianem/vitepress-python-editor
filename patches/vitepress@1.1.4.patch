@@ -1,3 +1,146 @@
+diff --git a/dist/client/theme-default/components/VPContent.vue b/dist/client/theme-default/components/VPContent.vue
+index 3b2dbdf6e0fff8ec2cd36ca80c713b9bfe738733..f8d08cda3cd4ee17be0e2627a47e170aa21672f3 100644
+--- a/dist/client/theme-default/components/VPContent.vue
++++ b/dist/client/theme-default/components/VPContent.vue
+@@ -16,7 +16,6 @@ const { hasSidebar } = useSidebar()
+     id="VPContent"
+     :class="{
+       'has-sidebar': hasSidebar,
+-      'is-home': frontmatter.layout === 'home'
+     }"
+   >
+     <slot name="not-found" v-if="page.isNotFound"><NotFound /></slot>
+@@ -69,15 +68,15 @@ const { hasSidebar } = useSidebar()
+   width: 100%;
+ }
+ 
+-.VPContent.is-home {
+-  width: 100%;
+-  max-width: 100%;
+-}
+-
+ .VPContent.has-sidebar {
+   margin: 0;
+ }
+ 
++@media (min-width: 768px) {
++  .VPContent {
++    width: 100vw;
++  }
++}
+ @media (min-width: 960px) {
+   .VPContent {
+     padding-top: var(--vp-nav-height);
+diff --git a/dist/client/theme-default/components/VPDocFooter.vue b/dist/client/theme-default/components/VPDocFooter.vue
+index 61d2398be0e1fb703b08ddf1243a2b149bf74776..44def546ec2c482f88400c9dc22c7ee46fb0073b 100644
+--- a/dist/client/theme-default/components/VPDocFooter.vue
++++ b/dist/client/theme-default/components/VPDocFooter.vue
+@@ -64,6 +64,7 @@ const showFooter = computed(() => {
+ 
+ <style scoped>
+ .VPDocFooter {
++  width: 100vw;
+   margin-top: 64px;
+ }
+ 
+diff --git a/dist/client/theme-default/components/VPLocalNav.vue b/dist/client/theme-default/components/VPLocalNav.vue
+index 15791dd5af695fac8134f4b31d6f560c3247ee77..83ce4af3f8f84b6ed9c801aaa6b1fb3d19caa96d 100644
+--- a/dist/client/theme-default/components/VPLocalNav.vue
++++ b/dist/client/theme-default/components/VPLocalNav.vue
+@@ -143,6 +143,10 @@ const classes = computed(() => {
+ }
+ 
+ @media (min-width: 768px) {
++  .VPLocalNav {
++    width: 100vw;
++  }
++
+   .menu {
+     padding: 0 32px;
+   }
+diff --git a/dist/client/theme-default/components/VPNav.vue b/dist/client/theme-default/components/VPNav.vue
+index 577c8eceaded06dfe2e3a99f171b81a92a21615b..44f94b2695b974ebb1f7c5b5ea48ea333d0df33e 100644
+--- a/dist/client/theme-default/components/VPNav.vue
++++ b/dist/client/theme-default/components/VPNav.vue
+@@ -49,6 +49,11 @@ watchEffect(() => {
+   transition: background-color 0.5s;
+ }
+ 
++@media (min-width: 768px) {
++  .VPNav {
++    width: 100vw;
++  }
++}
+ @media (min-width: 960px) {
+   .VPNav {
+     position: fixed;
+diff --git a/dist/client/theme-default/components/VPSidebar.vue b/dist/client/theme-default/components/VPSidebar.vue
+index d6c7321930d9fcc1ab3bcbbffbd0a70f7eda3052..c53323364b9a4f984bec9a7a8df78769ecda3b00 100644
+--- a/dist/client/theme-default/components/VPSidebar.vue
++++ b/dist/client/theme-default/components/VPSidebar.vue
+@@ -100,8 +100,8 @@ watch(
+ 
+ @media (min-width: 1440px) {
+   .VPSidebar {
+-    padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+-    width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
++    padding-left: max(32px, calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2));
++    width: calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+   }
+ }
+ 
+diff --git a/dist/client/theme-default/composables/outline.js b/dist/client/theme-default/composables/outline.js
+index 2d4b815c2936ee8c9359d80de5f37f75ba1eef5a..cd22d7c1063e9d99bda8fd867f28e5614fbd7380 100644
+--- a/dist/client/theme-default/composables/outline.js
++++ b/dist/client/theme-default/composables/outline.js
+@@ -87,6 +87,7 @@ export function useActiveAnchor(container, marker) {
+     const { isAsideEnabled } = useAside();
+     const onScroll = throttleAndDebounce(setActiveLink, 100);
+     let prevActiveLink = null;
++    let ignoreScrollOnce = false;
+     onMounted(() => {
+         requestAnimationFrame(setActiveLink);
+         window.addEventListener('scroll', onScroll);
+@@ -94,14 +95,27 @@ export function useActiveAnchor(container, marker) {
+     onUpdated(() => {
+         // sidebar update means a route change
+         activateLink(location.hash);
++        container.value.addEventListener('click', onClick)
+     });
+     onUnmounted(() => {
+         window.removeEventListener('scroll', onScroll);
++        container.value.removeEventListener('click', onClick)
+     });
++    function onClick(e) {
++        if (!isAsideEnabled.value || !(e.target instanceof HTMLAnchorElement)) {
++            return;
++        }
++        activateLink(location.hash);
++        ignoreScrollOnce = true;
++    }
+     function setActiveLink() {
+         if (!isAsideEnabled.value) {
+             return;
+         }
++        if (ignoreScrollOnce) {
++            ignoreScrollOnce = false;
++            return;
++        }
+         const scrollY = window.scrollY;
+         const innerHeight = window.innerHeight;
+         const offsetHeight = document.body.offsetHeight;
+diff --git a/dist/client/theme-default/styles/base.css b/dist/client/theme-default/styles/base.css
+index da61b764f4f471a8ed09594bcabedc86f7218922..0d5308d45ef3b99bd1bf8a6ec9dc4321df41d981 100644
+--- a/dist/client/theme-default/styles/base.css
++++ b/dist/client/theme-default/styles/base.css
+@@ -43,6 +43,7 @@ body {
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
++  overflow-x: hidden;
+ }
+ 
+ main {
 diff --git a/dist/node/serve-CXVdC751.js b/dist/node/serve-CXVdC751.js
 index bad35030b46e57d42803d5ca7f2402419f03acb9..bc0cbb8db9f1ffcaf6972826c0b52e13999ee63e 100644
 --- a/dist/node/serve-CXVdC751.js
