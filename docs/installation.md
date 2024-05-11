@@ -43,7 +43,7 @@ export defaultConfig({
 ```
 :::
 
-If your VitePress [assetsDir](https://vitepress.dev/reference/site-config#assetsdir) does not resolve to `.vitepress/dist/assets` (relative to the project root), pass the fully resolved path to the plugin like so:
+If your VitePress [assetsDir](https://vitepress.dev/reference/site-config#assetsdir) does not resolve to `.vitepress/dist/assets` (relative to the project root), pass the fully resolved path to the plugin:
 
 ::: code-group
 ```js{7} [.vitepress/config.js]
