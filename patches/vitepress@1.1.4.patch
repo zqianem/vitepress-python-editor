@@ -31,18 +31,18 @@ index 3b2dbdf6e0fff8ec2cd36ca80c713b9bfe738733..f8d08cda3cd4ee17be0e2627a47e170a
  @media (min-width: 960px) {
    .VPContent {
      padding-top: var(--vp-nav-height);
-diff --git a/dist/client/theme-default/components/VPDocFooter.vue b/dist/client/theme-default/components/VPDocFooter.vue
-index 61d2398be0e1fb703b08ddf1243a2b149bf74776..44def546ec2c482f88400c9dc22c7ee46fb0073b 100644
---- a/dist/client/theme-default/components/VPDocFooter.vue
-+++ b/dist/client/theme-default/components/VPDocFooter.vue
-@@ -64,6 +64,7 @@ const showFooter = computed(() => {
+diff --git a/dist/client/theme-default/components/VPFooter.vue b/dist/client/theme-default/components/VPFooter.vue
+index 3a21ff2b7f62a21a271cbdab6dd8da945b8d8321..e830ede950bd72aad5ffc815f7fc7015d2fb9cb9 100644
+--- a/dist/client/theme-default/components/VPFooter.vue
++++ b/dist/client/theme-default/components/VPFooter.vue
+@@ -40,6 +40,7 @@ const { hasSidebar } = useSidebar()
  
- <style scoped>
- .VPDocFooter {
-+  width: 100vw;
-   margin-top: 64px;
+ @media (min-width: 768px) {
+   .VPFooter {
++    width: 100vw;
+     padding: 32px;
+   }
  }
- 
 diff --git a/dist/client/theme-default/components/VPLocalNav.vue b/dist/client/theme-default/components/VPLocalNav.vue
 index 15791dd5af695fac8134f4b31d6f560c3247ee77..83ce4af3f8f84b6ed9c801aaa6b1fb3d19caa96d 100644
 --- a/dist/client/theme-default/components/VPLocalNav.vue
@@ -90,7 +90,7 @@ index d6c7321930d9fcc1ab3bcbbffbd0a70f7eda3052..c53323364b9a4f984bec9a7a8df78769
  }
  
 diff --git a/dist/client/theme-default/composables/outline.js b/dist/client/theme-default/composables/outline.js
-index 2d4b815c2936ee8c9359d80de5f37f75ba1eef5a..cd22d7c1063e9d99bda8fd867f28e5614fbd7380 100644
+index 2d4b815c2936ee8c9359d80de5f37f75ba1eef5a..8dae2b9043828b1b710119bcc6efcff97a174fe9 100644
 --- a/dist/client/theme-default/composables/outline.js
 +++ b/dist/client/theme-default/composables/outline.js
 @@ -87,6 +87,7 @@ export function useActiveAnchor(container, marker) {
