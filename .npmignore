@@ -1,4 +1,5 @@
 .vitepress
 .vscode
-demo/
+docs/
 patches/
+netlify.toml
