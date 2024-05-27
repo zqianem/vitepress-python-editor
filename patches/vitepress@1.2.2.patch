@@ -141,11 +141,11 @@ index da61b764f4f471a8ed09594bcabedc86f7218922..0d5308d45ef3b99bd1bf8a6ec9dc4321
  }
  
  main {
-diff --git a/dist/node/serve-CXVdC751.js b/dist/node/serve-CXVdC751.js
-index bad35030b46e57d42803d5ca7f2402419f03acb9..bc0cbb8db9f1ffcaf6972826c0b52e13999ee63e 100644
---- a/dist/node/serve-CXVdC751.js
-+++ b/dist/node/serve-CXVdC751.js
-@@ -50279,6 +50279,9 @@ async function serve(options = {}) {
+diff --git a/dist/node/serve-BwR5EPUJ.js b/dist/node/serve-BwR5EPUJ.js
+index 652efaaa6482932e0144fda13965cf69397a0d66..34e79a40ccf843c2e5c2e3df93f873b571d1053c 100644
+--- a/dist/node/serve-BwR5EPUJ.js
++++ b/dist/node/serve-BwR5EPUJ.js
+@@ -50174,6 +50174,9 @@ async function serve(options = {}) {
        if (notAnAsset(pathname)) {
          res.setHeader("cache-control", "no-cache");
        }
