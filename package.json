@@ -34,11 +34,10 @@
     "@codemirror/view": "^6.26.3",
     "@lezer/common": "^1.2.1",
     "@lezer/highlight": "^1.2.0",
-    "isomorphic-fetch": "^3.0.0",
     "vue": "^3.4.27"
   },
   "peerDependencies": {
-    "pyodide": "^0.25.1"
+    "pyodide": "^0.26.0"
   },
   "devDependencies": {
     "vitepress": "^1.2.2"

@@ -13,9 +13,6 @@ export function vitepressPythonEditor(
       worker: {
         format: 'es',
       },
-      optimizeDeps: {
-        exclude: ['pyodide'],
-      },
     }),
     configureServer: (server) => {
       server.middlewares.use((_, res, next) => {
