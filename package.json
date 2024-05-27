@@ -15,7 +15,10 @@
   "bugs": "https://github.com/zqianem/vitepress-python-editor/issues",
   "license": "MIT",
   "author": "Em Zhan <zqianem@gmail.com>",
-  "repository": "github:zqianem/vitepress-python-editor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zqianem/vitepress-python-editor.git"
+  },
   "type": "module",
   "exports": {
     ".": "src/Editor.vue",
