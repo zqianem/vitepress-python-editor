@@ -156,6 +156,7 @@ function reset() {
   editor.dispatch({
     changes: { from: 0, to: editor.state.doc.length, insert: initialCode },
     selection: { anchor: 0 },
+    scrollIntoView: true,
   })
   editor.focus()
   resetOutput()
