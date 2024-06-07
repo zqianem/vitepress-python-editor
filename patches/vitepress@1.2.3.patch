@@ -130,7 +130,7 @@ index 2d4b815c2936ee8c9359d80de5f37f75ba1eef5a..8dae2b9043828b1b710119bcc6efcff9
          const innerHeight = window.innerHeight;
          const offsetHeight = document.body.offsetHeight;
 diff --git a/dist/client/theme-default/styles/base.css b/dist/client/theme-default/styles/base.css
-index da61b764f4f471a8ed09594bcabedc86f7218922..0d5308d45ef3b99bd1bf8a6ec9dc4321df41d981 100644
+index 8041b6bc37a2022dcd22c015611ac7fbb9405b13..9bfa759ed867d9ea096eea22fe90a20afbde3917 100644
 --- a/dist/client/theme-default/styles/base.css
 +++ b/dist/client/theme-default/styles/base.css
 @@ -43,6 +43,7 @@ body {
@@ -141,11 +141,11 @@ index da61b764f4f471a8ed09594bcabedc86f7218922..0d5308d45ef3b99bd1bf8a6ec9dc4321
  }
  
  main {
-diff --git a/dist/node/serve-BwR5EPUJ.js b/dist/node/serve-BwR5EPUJ.js
-index 652efaaa6482932e0144fda13965cf69397a0d66..34e79a40ccf843c2e5c2e3df93f873b571d1053c 100644
---- a/dist/node/serve-BwR5EPUJ.js
-+++ b/dist/node/serve-BwR5EPUJ.js
-@@ -50174,6 +50174,9 @@ async function serve(options = {}) {
+diff --git a/dist/node/serve-CEEKiiuH.js b/dist/node/serve-CEEKiiuH.js
+index 6fdb5a336b38b8e94dbb8c7a86ed5c2756c5bd0a..a608d01ba7232ce056ab4f429c2c5e57fd65ccd1 100644
+--- a/dist/node/serve-CEEKiiuH.js
++++ b/dist/node/serve-CEEKiiuH.js
+@@ -50354,6 +50354,9 @@ async function serve(options = {}) {
        if (notAnAsset(pathname)) {
          res.setHeader("cache-control", "no-cache");
        }
