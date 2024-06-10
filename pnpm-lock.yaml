@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  vitepress@1.2.2:
-    hash: fme4fet73pfmtnxiltwrdeqqti
-    path: patches/vitepress@1.2.2.patch
   vitepress@1.2.3:
     hash: vshj6yww3v5dogjw3hxl4mgvmu
     path: patches/vitepress@1.2.3.patch
