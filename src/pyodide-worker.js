@@ -1,6 +1,6 @@
 import { loadPyodide } from 'pyodide'
 
-const pyodide = await loadPyodide()
+const pyodide = await loadPyodide({ checkAPIVersion: false })
 const decoder = new TextDecoder()
 
 let inputData = null
