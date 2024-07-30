@@ -75,10 +75,10 @@ index 577c8eceaded06dfe2e3a99f171b81a92a21615b..44f94b2695b974ebb1f7c5b5ea48ea33
    .VPNav {
      position: fixed;
 diff --git a/dist/client/theme-default/components/VPSidebar.vue b/dist/client/theme-default/components/VPSidebar.vue
-index d6c7321930d9fcc1ab3bcbbffbd0a70f7eda3052..c53323364b9a4f984bec9a7a8df78769ecda3b00 100644
+index 35fa783893017e79adf387f5529d2fefabd91424..10ea85bbde8367cb2302d6c4036443f1b8a78a9c 100644
 --- a/dist/client/theme-default/components/VPSidebar.vue
 +++ b/dist/client/theme-default/components/VPSidebar.vue
-@@ -100,8 +100,8 @@ watch(
+@@ -111,8 +111,8 @@ watch(
  
  @media (min-width: 1440px) {
    .VPSidebar {
@@ -141,11 +141,11 @@ index 8041b6bc37a2022dcd22c015611ac7fbb9405b13..9bfa759ed867d9ea096eea22fe90a20a
  }
  
  main {
-diff --git a/dist/node/serve-CEEKiiuH.js b/dist/node/serve-CEEKiiuH.js
-index 6fdb5a336b38b8e94dbb8c7a86ed5c2756c5bd0a..a608d01ba7232ce056ab4f429c2c5e57fd65ccd1 100644
---- a/dist/node/serve-CEEKiiuH.js
-+++ b/dist/node/serve-CEEKiiuH.js
-@@ -50354,6 +50354,9 @@ async function serve(options = {}) {
+diff --git a/dist/node/serve-oY-f4fXJ.js b/dist/node/serve-oY-f4fXJ.js
+index cdf8a2411c31946e1d05aa4a4928015c461a5e20..9e25f9a6a431ac337233d2ef9fddabd35de8cef8 100644
+--- a/dist/node/serve-oY-f4fXJ.js
++++ b/dist/node/serve-oY-f4fXJ.js
+@@ -50494,6 +50494,9 @@ async function serve(options = {}) {
        if (notAnAsset(pathname)) {
          res.setHeader("cache-control", "no-cache");
        }
