@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { vitepressPythonEditor } from 'vitepress-python-editor/vite-plugin'
+import { vitepressPythonEditor } from '../src/vite-plugin'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({

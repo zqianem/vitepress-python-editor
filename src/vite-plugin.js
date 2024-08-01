@@ -14,7 +14,7 @@ export function vitepressPythonEditor(
         format: 'es',
       },
       optimizeDeps: {
-        exclude: 'pyodide',
+        exclude: ['pyodide'],
       },
     }),
     configureServer: (server) => {
