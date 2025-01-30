@@ -50,6 +50,9 @@
     "patchedDependencies": {
       "vitepress@1.6.3": "patches/vitepress@1.6.3.patch"
     },
-    "allowNonAppliedPatches": true
+    "allowNonAppliedPatches": true,
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
