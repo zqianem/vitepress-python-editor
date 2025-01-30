@@ -35,8 +35,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       pyodide:
-        specifier: ^0.26.0
-        version: 0.26.3
+        specifier: ^0.27.2
+        version: 0.27.2
       vue:
         specifier: ^3.5.13
         version: 3.5.13
@@ -709,8 +709,8 @@ packages:
   property-information@6.5.0:
     resolution: {integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==}
 
-  pyodide@0.26.3:
-    resolution: {integrity: sha512-cRe9CswiTNTIypOr/RtTb+aR8SxA6KG8aEf3i0OK0nzINLzF4jfVpV5DK2BwP3808ipxoL+ZrnUIjwN5wC8tCw==}
+  pyodide@0.27.2:
+    resolution: {integrity: sha512-sfA2kiUuQVRpWI4BYnU3sX5PaTTt/xrcVEmRzRcId8DzZXGGtPgCBC0gCqjUTUYSa8ofPaSjXmzESc86yvvCHg==}
     engines: {node: '>=18.0.0'}
 
   regex-recursion@5.1.1:
@@ -1529,7 +1529,7 @@ snapshots:
 
   property-information@6.5.0: {}
 
-  pyodide@0.26.3:
+  pyodide@0.27.2:
     dependencies:
       ws: 8.18.0
     transitivePeerDependencies:
