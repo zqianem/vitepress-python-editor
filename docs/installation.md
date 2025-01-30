@@ -2,6 +2,10 @@
 
 Before using the editor, take the steps detailed below.
 
+## 0. Install VitePress
+
+If you don't already have a VitePress project, [install VitePress](https://vitepress.dev/guide/getting-started#installation) and run its setup wizard.
+
 ## 1. Add dependency
 
 First, add [`vitepress-python-editor`](https://www.npmjs.com/package/vitepress-python-editor) as a dependency:
