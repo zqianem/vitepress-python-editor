@@ -33,14 +33,14 @@
     "@codemirror/commands": "^6.8.0",
     "@codemirror/lang-python": "^6.1.7",
     "@codemirror/language": "^6.10.8",
-    "@codemirror/state": "^6.5.1",
-    "@codemirror/view": "^6.36.2",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.3",
     "@lezer/common": "^1.2.3",
     "@lezer/highlight": "^1.2.1",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "pyodide": "^0.27.2"
+    "pyodide": "^0.27.3"
   },
   "devDependencies": {
     "vitepress": "^1.6.3"
