@@ -1,6 +1,17 @@
 import { loadPyodide } from 'pyodide'
 
+const packages = [/* to be transformed by vite-plugin-vitepress-python-editor */]
+
 const pyodide = await loadPyodide({ checkAPIVersion: false })
+
+if (packages.length > 0) {
+  await pyodide.loadPackage('micropip')
+  const micropip = pyodide.pyimport('micropip')
+  for (const p of packages) {
+    await micropip.install(p)
+  }
+}
+
 const decoder = new TextDecoder()
 
 let inputData = null

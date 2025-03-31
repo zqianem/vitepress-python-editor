@@ -39,5 +39,16 @@ export function vitepressPythonEditor(
         )
       }
     },
+    transform(src, id) {
+      if (id.endsWith('pyodide-worker.js?worker_file&type=module')) {
+        return {
+          code: src.replace(
+            '/* to be transformed by vite-plugin-vitepress-python-editor */',
+            '"click"'
+          ),
+          map: null,
+        }
+      }
+    }
   }
 }
