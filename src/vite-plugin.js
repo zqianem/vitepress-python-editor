@@ -1,5 +1,5 @@
-import { copyFile, mkdir } from 'fs/promises'
-import { join } from 'path'
+import { copyFile, mkdir } from 'node:fs/promises'
+import { join } from 'node:path'
 
 export function vitepressPythonEditor(
   { assetsDir } = { assetsDir: '.vitepress/dist/assets' }
