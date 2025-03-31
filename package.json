@@ -45,12 +45,12 @@
   "devDependencies": {
     "vitepress": "^1.6.3"
   },
-  "packageManager": "pnpm@10.1.0+sha512.c89847b0667ddab50396bbbd008a2a43cf3b581efd59cf5d9aa8923ea1fb4b8106c041d540d08acb095037594d73ebc51e1ec89ee40c88b30b8a66c0fae0ac1b",
+  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
   "pnpm": {
     "patchedDependencies": {
-      "vitepress@1.6.3": "patches/vitepress@1.6.3.patch"
+      "vitepress@^1.6.3": "patches/vitepress@1.6.3.patch"
     },
-    "allowNonAppliedPatches": true,
+    "allowUnusedPatches": true,
     "onlyBuiltDependencies": [
       "esbuild"
     ]
