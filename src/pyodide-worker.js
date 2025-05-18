@@ -5,7 +5,8 @@ const packages = [/* to be transformed by vite-plugin-vitepress-python-editor */
 const pyodide = await loadPyodide({ checkAPIVersion: false })
 
 if (packages.length > 0) {
-  await pyodide.loadPackage('micropip')
+  await pyodide.loadPackage('https://cdn.jsdelivr.net/pyodide/v0.27.4/full/packaging-24.2-py3-none-any.whl')
+  await pyodide.loadPackage('https://cdn.jsdelivr.net/pyodide/v0.27.4/full/micropip-0.8.0-py3-none-any.whl')
   const micropip = pyodide.pyimport('micropip')
   for (const p of packages) {
     await micropip.install(p)
